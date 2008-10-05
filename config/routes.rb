@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  #map.resources :services
 
   map.resource :account,
     :member => { :activate => :get, :password => :get, :change_password => :put } do |account|
@@ -7,6 +8,9 @@ ActionController::Routing::Routes.draw do |map|
     end
     account.resources :sites do |sites|
       sites.resources :release_policies
+    end
+    account.resources :services do |services|
+      services.resources :services
     end
     account.resource :yubikey_association
   end

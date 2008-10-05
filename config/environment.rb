@@ -1,5 +1,7 @@
-# Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+ENV['RAILS_ENV'] ||= 'development'
+ENV['GEM_PATH'] = '/home/useraxis/.gems:/usr/lib/ruby/gems/1.8'
+
+RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')

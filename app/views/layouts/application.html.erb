@@ -26,6 +26,7 @@
 					<%= nav 'my profile', edit_account_path, 'accounts' => ['edit', 'update'] %>
 					<%= nav 'my personas', account_personas_path, 'personas' => [] %>
 					<%= nav 'my trusted sites', account_sites_path, 'sites' => [] %>
+					<%= nav 'my social services', account_services_path, 'services' => [] %>
 					<%= nav 'logout', logout_path %>
 					<% else %>
 					<%= nav 'current verification request', proceed_path, 'server' => [] %>
