@@ -1,0 +1,44 @@
+
+	<h2>Account Registration</h2>
+	<form action="">
+		<p>Please complete the form below.</p>
+		<fieldset class="login">
+			<legend>Login Details</legend>
+			<div>
+				<label for="username">User Name</label> <input id="username" name="username" type="text">
+			</div>
+			<div>
+				<label for="password">Password</label> <input id="password" name="password" type="password">
+			</div>
+			<div>
+				<label for="password2">Retype Password</label> <input id="password2" name="password2" type="password">
+			</div>
+		</fieldset>
+		<fieldset class="contact">
+			<legend>User Details</legend>
+			<div>
+				<label for="firstname">First Name</label> <input id="firstname" name="firstname" type="text">
+			</div>
+			<div>
+				<label for="lastname">Last Name</label> <input id="lastname" name="lastname" type="text">
+			</div>
+			<div class="radio">
+				<fieldset>
+					<legend><span>Gender</span></legend>
+					<div>
+						<input id="male" name="gender" value="male" type="radio"> <label for="male">Male</label>
+					</div>
+					<div>
+						<input id="female" name="gender" value="female" type="radio"> <label for="female">Female</label>
+					</div>
+				</fieldset>
+			</div>
+			<div class="date">
+			<label for="dob">Date of Birth</label> <input maxlength="10" class="default default" value="YYYY/MM/DD" name="dob" id="dob" type="text"></div>
+			<div>
+				<label for="email">Email</label> <input id="email" name="email" class="email" type="text">
+			</div>
+		</fieldset>
+		<div><button type="submit" id="submit-go">Submit</button></div>
+	</form>
+

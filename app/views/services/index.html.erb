@@ -12,7 +12,7 @@
     <td><%=h service.service %></td>
     <td><%= link_to 'Show', account_services_path %></td>
     <td><%= link_to 'Edit', edit_account_service_path(service) %></td>
-    <td><%= link_to 'Destroy', account_services_path, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', account_service_path(service), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

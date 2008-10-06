@@ -1,0 +1,22 @@
+<div id="topbar">
+		<div class="content">
+                        <div id="login">
+                            <% if logged_in? %>
+                                <a href="http://useraxis.org/logout">logout</a> <span class="separator"> | </span> 
+                                <a href="http://useraxis.org/#">settings</a> <span class="separator"> | </span> 
+                            <% else %>
+                                <a href="http://useraxis.org/login">login</a> <span class="separator"> | </span> 
+                                <a href="http://useraxis.org/account/new">signup</a> <span class="separator"> | </span> 
+                            <% end %>
+                                <a href="http://useraxis.org/help/">help</a> <span class="separator">  </span> 
+			</div>
+
+			<div class="url">
+                            <% if logged_in? %>
+					<p>Logged in as <%= @account.login  %></p>
+                            <% else %>
+                                        <p>You are not logged in </p>
+                            <% end %>
+                        </div>
+		</div>
+</div>

@@ -1,0 +1,26 @@
+<h1>Listing opml_metadatas</h1>
+
+<table>
+  <tr>
+    <th>Size</th>
+    <th>Content type</th>
+    <th>Filename</th>
+    <th>Db file</th>
+  </tr>
+
+<% for opml_metadata in @opml_metadatas %>
+  <tr>
+    <td><%=h opml_metadata.size %></td>
+    <td><%=h opml_metadata.content_type %></td>
+    <td><%=h opml_metadata.filename %></td>
+    <td><%=h opml_metadata.db_file_id %></td>
+    <td><%= link_to 'Show', opml_metadata %></td>
+    <td><%= link_to 'Edit', edit_opml_metadata_path(opml_metadata) %></td>
+    <td><%= link_to 'Destroy', opml_metadata, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New opml_metadata', new_opml_metadata_path %>

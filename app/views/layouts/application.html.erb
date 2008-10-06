@@ -12,48 +12,35 @@
 		<link rel="seatbelt.config" type="application/xml" href="<%= formatted_seatbelt_config_url(:format => :xml, :protocol => scheme) %>" />
 		<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
 		<link rel="icon" href="/favicon.ico" type="image/ico" />
+		<%= stylesheet_link_tag 'body' %>
 		<%= stylesheet_link_tag 'application' %>
 		<%= javascript_include_tag 'prototype' %>
 	</head>
 	<body>
-		<div id="head">
-      <div class="wrap">
-				<h1><%= link_to APP_CONFIG['name'], home_path %></h1>
-				<ul id="navi">
-				<% if logged_in? %>
-					<% unless checkid_request %>
-					<%= nav 'my identity', identity_path(current_account), 'accounts' => ['show'] %>
-					<%= nav 'my profile', edit_account_path, 'accounts' => ['edit', 'update'] %>
-					<%= nav 'my personas', account_personas_path, 'personas' => [] %>
-					<%= nav 'my trusted sites', account_sites_path, 'sites' => [] %>
-					<%= nav 'my social services', account_services_path, 'services' => [] %>
-					<%= nav 'logout', logout_path %>
-					<% else %>
-					<%= nav 'current verification request', proceed_path, 'server' => [] %>
-					<% end %>
-				<% else %>
-					<%= nav 'login', login_path, 'sessions' => ['new', 'create'] %>
-					<%= nav 'signup', new_account_path, 'accounts' => ['new', 'create'] %>
-					<%= nav 'help', help_path, 'info' => ['help'] %>
-				<% end %>
-				</ul>
+		<% @account = current_account %>
+
+               	<%= render :partial => 'shared/topbar' %>
+                <%= render :partial => 'shared/top' %>
+
+
+                <div class="content">
+			<div id="main">
+				<%= render :partial => 'shared/openid_settings' %>
+                        	<%= render :partial => 'shared/resources' %>
+				<div id="left_side">
+					<div class="intro">
+						This service is an experiment,<br> use it at your own risk !
+					</div>
+					<div class="mpart">
+			       			<% if flash[:notice] %><div class="notice"><%=simple_format h(flash[:notice]) %></div><% end %>
+						<% if flash[:error] %><div class="error"><%=simple_format h(flash[:error]) %></div><% end %>
+			 			<%= yield %>
+               	                	</div>
+
+				</div>
 			</div>
-		</div>
-		<div id="main">
-			<div class="wrap">
-    		<% if flash[:notice] %><div class="notice"><%=simple_format h(flash[:notice]) %></div><% end %>
-    		<% if flash[:error] %><div class="error"><%=simple_format h(flash[:error]) %></div><% end %>
-				<%= yield %>
-			</div>
-		</div>
-		<div id="foot">
-			<div class="wrap">
-				<span class="note">
-					powered by <%= link_to 'masquerade', 'http://dennisbloete.de/projects/masquerade/' %> 
-					and <%= link_to "#{image_tag('openid_symbol.png')} OpenID", 'http://openid.net/' %> | 
-					<%= link_to 'get help', help_path %>
-				</span>
-			</div>
-		</div>
+			<%= render :partial => 'shared/footer' %>
+                 </div>
+
 	</body>
 </html>

@@ -1,7 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :opml_metadatas
-
   map.resource :account,
     :member => { :activate => :get, :password => :get, :change_password => :put } do |account|
     account.resources :personas do |personas|
@@ -11,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
       sites.resources :release_policies
     end
     account.resources :services do |services|
-      services.resources :services, :collection  => { :destroy => :delete }
+      services.resources :services  => { :destroy => :delete }
     end
     account.resource :yubikey_association
   end

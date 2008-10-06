@@ -1,0 +1,32 @@
+<h1>Editing opml_metadata</h1>
+
+<%= error_messages_for :opml_metadata %>
+
+<% form_for(@opml_metadata) do |f| %>
+  <p>
+    <b>Size</b><br />
+    <%= f.text_field :size %>
+  </p>
+
+  <p>
+    <b>Content type</b><br />
+    <%= f.text_field :content_type %>
+  </p>
+
+  <p>
+    <b>Filename</b><br />
+    <%= f.text_field :filename %>
+  </p>
+
+  <p>
+    <b>Db file</b><br />
+    <%= f.text_field :db_file_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @opml_metadata %> |
+<%= link_to 'Back', opml_metadatas_path %>
