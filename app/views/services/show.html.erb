@@ -1,12 +1,19 @@
-<p>
-  <b>Username:</b>
-  <%=h @service.username %>
-</p>
+<table>  
+  <tr>
+  <td>
+     <b>Servicename:</b><br /><br /> 
+     <%=h @service.servicename %> 
+  </td>
+  <td>
+    <b>Url:</b><br /><br /> 
+    <%=h @service.url %>
+  </td>
+  </tr>
+</table>
 
-<p>
-  <b>Service:</b>
-  <%=h @service.service %>
-</p>
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
 
-<%= link_to 'Edit', edit_account_service_path(@service) %> |
-<%= link_to 'Back', account_services_path %>
+
+
+

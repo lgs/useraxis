@@ -38,5 +38,8 @@ Rails::Initializer.run do |config|
   config.gem 'ruby-openid', :lib => 'openid', :version => '2.1.2'
   config.gem 'ruby-yadis', :lib => 'yadis', :version => '0.3.4'
   config.gem 'mocha', :version => '0.9.0'
+
+  # My own
+  config.gem 'gnip-gnip', :lib => 'gnip', :version => '2.0.3'
   
 end

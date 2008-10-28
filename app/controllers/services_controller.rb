@@ -1,13 +1,18 @@
 class ServicesController < ApplicationController
+
   before_filter :login_required
   before_filter :find_account
-  #before_filter :find_service, :only => [:edit, :update, :destroy]
 
+  def list
+    #@services = @account.usernames.collect { |s| s.service }
+    @services = Service.find(:all)
+  end
 
   # GET /services
   # GET /services.xml
   def index
-    @services = Service.find(:all)
+    @services = @account.usernames.collect { |s| s.service }
+    #@services = Service.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,7 +44,15 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+
+    #redirect_to :controller => 'usernames', :action => 'new'
     @service = Service.find(params[:id])
+    @username = @service.usernames.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @username }
+    end
   end
 
   # POST /services
@@ -50,8 +63,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       if @service.save
         flash[:notice] = 'Service was successfully created.'
-        #format.html { redirect_to(@service) }
-        format.html { redirect_to(account_service_path(@service)) }
+        format.html { redirect_to(@service) }
         format.xml  { render :xml => @service, :status => :created, :location => @service }
       else
         format.html { render :action => "new" }
@@ -68,8 +80,7 @@ class ServicesController < ApplicationController
     respond_to do |format|
       if @service.update_attributes(params[:service])
         flash[:notice] = 'Service was successfully updated.'
-        #format.html { redirect_to(@service) }
-        format.html { redirect_to(account_service_path(@service)) }
+        format.html { redirect_to(@service) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,14 +96,9 @@ class ServicesController < ApplicationController
     @service.destroy
 
     respond_to do |format|
-      format.html { redirect_to(account_services_url) }
+      format.html { redirect_to(services_url) }
       format.xml  { head :ok }
     end
   end
-  private
-
-  #def find_service
-  #  @site = @account.services.find(params[:id])
-  #end
 
 end

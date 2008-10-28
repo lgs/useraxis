@@ -1,21 +1,22 @@
 <h1>Editing service</h1>
 
-<% form_for @service, :url => account_service_path(@service), :method => :put do |f| %>
-  <%= f.error_messages %>
+  <% form_for(@username) do |f| %>
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :service %><br />
-    <%= f.text_field :service %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
+    <p>
+      <%= image_tag("/images/sites_icons/#{@service.servicename}.png") %>
+      <%= @service.servicename-%><%= " username" %>
+    </p>
+    <p>
+      <%= f.text_field :login_name %>
+      <%= f.hidden_field :account_id, :value => "#{@account.id}" %>
+      <%= f.hidden_field :service_id, :value => "#{@service.id}" %>
+    </p>
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+  <% end %>
 
-<%= link_to 'Show', account_service_path(@service) %> |
-<%= link_to 'Back', account_services_path %>
 
+<%= link_to 'Show', @service %> |
+<%= link_to 'Back', services_path %>

@@ -1,7 +1,10 @@
 class Account < ActiveRecord::Base
-  
+
   has_many :personas, :dependent => :destroy, :order => 'id ASC'
   has_many :sites, :dependent => :destroy
+  
+  has_many :services, :through => :usernames  
+  has_many :usernames
 
   validates_presence_of :login
   validates_length_of :login, :within => 3..40

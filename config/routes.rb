@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :usernames
+  map.resources :services, :collection  => { :list => :get }
   map.resources :opml_metadatas
 
   map.resource :account,
@@ -10,9 +12,10 @@ ActionController::Routing::Routes.draw do |map|
     account.resources :sites do |sites|
       sites.resources :release_policies
     end
-    account.resources :services do |services|
-      services.resources :services, :collection  => { :destroy => :delete }
-    end
+    #account.resources :services do |services|
+      #services.resources :services, :collection  => { :lastfm => :get, :destroy => :delete }
+      #services.resources 'di_prova', :member  => { :lastfm => :get, :destroy => :delete }
+    #end
     account.resource :yubikey_association
   end
   

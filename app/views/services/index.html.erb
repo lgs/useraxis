@@ -1,22 +1,21 @@
-<h1>Listing services</h1>
+<h1>My LifeStream collection </h1><br />
 
 <table>
-  <tr>
-    <th>Username</th>
-    <th>Service</th>
-  </tr>
-
-<% for service in @services %>
-  <tr>
-    <td><%=h service.username %></td>
-    <td><%=h service.service %></td>
-    <td><%= link_to 'Show', account_services_path %></td>
-    <td><%= link_to 'Edit', edit_account_service_path(service) %></td>
-    <td><%= link_to 'Destroy', account_service_path(service), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% for service in @services %>
+    <%= link_to "#{image_tag("/images/sites_icons/#{service.servicename}.png")}", list_services_path -%>
+  <% end %>
+  <%= link_to " add/edit", list_services_path %>
 </table>
 
-<br />
+<!--  table>
+<# % for service in @services %>
+  <tr>
+    <td><# %= link_to "#{image_tag("/images/sites_icons/#{service.servicename}.png")} #{service.servicename}", edit_service_path(service) -%></td>
+  </tr>
+<# % end %>
+</table -->
 
-<%= link_to 'New service', new_account_service_path %>
+<!-- %= link_to 'New service', new_service_path % -->
+
+
+

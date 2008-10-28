@@ -4,10 +4,10 @@
                                 <h3>OpenID Settings</h3>
                                 <ul id="navi">
                                         <% unless checkid_request %>
-                                       	  <%= nav 'my identity', identity_path(current_account), 'accounts' => ['show'] %>
-                                          <%= nav 'my profile', edit_account_path, 'accounts' => ['edit', 'update'] %>
-                                          <%= nav 'my personas', account_personas_path, 'personas' => [] %>
-                                          <%= nav 'my trusted sites', account_sites_path, 'sites' => [] %>
+                                       	  <%= nav 'identity', identity_path(current_account), 'accounts' => ['show'] %>
+                                          <%= nav 'profile', edit_account_path, 'accounts' => ['edit', 'update'] %>
+                                          <%= nav 'personas', account_personas_path, 'personas' => [] %>
+                                          <%= nav 'trusted sites', account_sites_path, 'sites' => [] %>
                                         <% else %>
                                           <%= nav 'current verification request', proceed_path, 'server' => [] %>
                                         <% end %>
