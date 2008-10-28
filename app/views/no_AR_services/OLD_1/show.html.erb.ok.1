@@ -1,0 +1,18 @@
+<h1>Social Media Service:</h1>
+
+<%- if @service.url == "lastfm" -%>
+  <%= render :partial => 'lastfm' %>
+<%- end -%>
+
+<p><%= link_to "Select your Social Media Service", services_path %></p>
+
+<%- case  -%>
+     <%- when @service.url == "lastfm" -%>
+         <%= render :partial => 'lastfm' %>
+     <%- when @service.url == "delicious" -%>
+         <%= render :partial => 'delicious' %>
+     <%- when @service.url == "twitter " -%>
+         <%= render :partial => 'twitter' %>
+<%- else  -%>
+     <%= link_to "Select your Social Media Service", services_path %>
+<%- end   -%>

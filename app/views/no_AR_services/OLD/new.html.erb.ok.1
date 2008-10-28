@@ -1,0 +1,30 @@
+<h1>Insert your username</h1>
+
+<% form_for @service, :url => account_service_path(@service), :method => :put do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= image_tag("/images/sites_icons/lastfm.png") -%>
+    <%= f.hidden_field :url, :value => 'http://www.lastfm.it/user/' %>
+    <%= f.label :lastfm %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= image_tag("/images/sites_icons/delicious.png") -%>
+    <%= f.hidden_field :url, :value => 'http://delicious.com/' %>
+    <%= f.label :delicious %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= image_tag("/images/sites_icons/twitter.png") -%>
+    <%= f.hidden_field :url, :value => 'http://twitter.com/home' %>
+    <%= f.label :twitter %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', account_services_path %>
+<br />
+

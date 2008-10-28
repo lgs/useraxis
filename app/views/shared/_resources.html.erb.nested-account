@@ -1,0 +1,14 @@
+                        <%- if logged_in? -%>
+                                <div class="right_side">
+                                        <div class="pad">
+                                                <h3>Resources</h3>
+                                                <ul>
+                                                   <li><%= link_to 'Upload your OPML feed', new_opml_metadata_path %></li>
+                                        	   <!-- li> # <%= link_to 'my social services', account_services_path, 'services' => [] %></li -->
+                                        	   <li><%= link_to 'my social services', account_services_path, 'services' => [] %></li>
+                                                   <li><%= link_to 'my lifestream', opml_metadatas_path %></li>
+                                                </ul>
+                                        </div>
+                                </div>
+                        <%- end -%>
+

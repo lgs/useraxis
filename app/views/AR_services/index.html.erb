@@ -1,0 +1,29 @@
+<h1>Listing services</h1>
+
+<% for s in @list %>   
+  <br />
+    <%= link_to "#{image_tag("/images/sites_icons/#{s.selector}.png")} #{s.selector}",  edit_service_path("#{s.selector}") -%>
+  <br />
+<% end %>
+<br />
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Service name</th>
+  </tr>
+
+<% for service in @services %>
+  <tr>
+    <td><%=h service.username %></td>
+    <td><%=h service.servicename %></td>
+    <td><%=h service.url %></td>
+    <td><%= link_to 'Show', service %></td>
+    <td><%= link_to 'Edit', edit_service_path(service) %></td>
+    <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+<%= link_to 'New service', new_service_path %>

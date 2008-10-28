@@ -1,0 +1,27 @@
+class Service < ActiveRecord::Base
+  belongs_to :account
+  has_many :release_policies, :dependent => :destroy
+
+  validates_presence_of :service, :account
+
+  def friendfeed
+    url = 'http://friendfeed.com/'
+  end
+
+  def lastfm
+    url = 'http://www.linkedin.com/in/'
+  end
+
+  def lastfm
+    url = 'http://www.lastfm.it/user/'
+  end
+
+  def delicious
+    url = 'http://delicious.com/'
+  end
+
+  def twitter
+    url = 'http://twitter.com/'
+  end
+
+end

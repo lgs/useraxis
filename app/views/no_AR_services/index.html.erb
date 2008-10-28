@@ -1,0 +1,12 @@
+<h1> Social Media Services </h1>
+
+<% for service in  @services %>   
+   <br />
+     <%= link_to image_tag("/images/sites_icons/#{service.s_name}.png"), service -%>
+     <%= link_to service.s_name, service -%>
+   <br />
+<% end %>
+  
+<p><br />
+     <!-- # %= link_to 'Add a new service', new_service_path % --> 
+</p>

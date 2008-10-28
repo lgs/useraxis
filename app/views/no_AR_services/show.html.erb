@@ -1,0 +1,14 @@
+<h1>Social Media Service:</h1>
+<%- case  -%>
+     <%- when @service.s_name == "lastfm" -%>
+         <%= render :partial => 'lastfm' %>
+         <%= link_to "Back to Social Media Service list", services_path %>
+     <%- when @service.s_name == "delicious" -%>
+         <%= render :partial => 'delicious' %>
+         <%= link_to "Back to Social Media Service list", services_path %>
+     <%- when @service.s_name == "twitter" -%>
+         <%= render :partial => 'twitter' %>
+         <%= link_to "Back to Social Media Service list", services_path %>
+<%- else  -%>
+     <%= link_to 'Add a new service', new_service_path %> 
+<%- end   -%>
