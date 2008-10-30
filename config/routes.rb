@@ -1,5 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :feed_urls
+  map.resources :home
+  map.connect '/search', :controller => 'home', :action => 'search'
+  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
+  #map.root :controller => "home"
+
+
   map.resources :usernames
   map.resources :services, :collection  => { :list => :get }
   map.resources :opml_metadatas

@@ -1,5 +1,12 @@
+require 'md5'
+
+   
+
 class ApplicationController < ActionController::Base
   
+  helper :all # include all helpers, all the time+
+  helper_method :fix_host
+
   include ExceptionNotifiable
   include OpenidServerSystem
   include AuthenticatedSystem
@@ -16,6 +23,14 @@ class ApplicationController < ActionController::Base
   helper_method :extract_host, :extract_login_from_identifier, :checkid_request,
     :identifier, :endpoint_url, :scheme
   
+  def fix_host(content, link)
+    host = URI.parse(link).host
+      if host != "feeds.feedburner.com"
+        content.gsub!("src=\"/", "src=\"http://"+host+"/")
+      end
+    return content
+  end
+
   protected
   
   # before_filter for every account-based controller

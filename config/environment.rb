@@ -41,5 +41,12 @@ Rails::Initializer.run do |config|
 
   # My own
   config.gem 'gnip-gnip', :lib => 'gnip', :version => '2.0.3'
-  
+
 end
+# For mislav's will paginate plugin
+gem 'mislav-will_paginate', '~> 2.2'
+require 'will_paginate'
+
+WhiteListHelper.tags.delete %w(object th)
+
+
