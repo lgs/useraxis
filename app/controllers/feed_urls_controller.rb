@@ -1,5 +1,6 @@
 class FeedUrlsController < ApplicationController
-  before_filter :authenticate
+  #before_filter :authenticate
+  before_filter :login_required
   
   # GET /feed_urls
   # GET /feed_urls.xml

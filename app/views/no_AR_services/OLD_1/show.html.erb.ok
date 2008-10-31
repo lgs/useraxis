@@ -1,5 +1,0 @@
-<h1>Social Media Service:</h1> <%= @service.url %>
-
-<p><%= link_to "Select your Social Media Service", services_path %></p>
-
-
