@@ -5,7 +5,6 @@
 #
 #  id         :integer(11)     not null, primary key
 #  feed_url   :string(255)
-#  account_id :integer(11)     not null, f key
 #  title      :string(255)
 #  star       :string(255)
 #  created_at :datetime
@@ -53,7 +52,6 @@ class FeedUrl < ActiveRecord::Base
       if (Feed.find_by_link(link)).blank?
         rss_feed = Feed.new
         rss_feed.feed_url = self
-        rss_feed.account_id = account_id
         rss_feed.site_link = site_link
         rss_feed.site_title = site_title
         rss_feed.title = (item/:title).inner_html

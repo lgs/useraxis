@@ -11,6 +11,7 @@
   <p>
     <b>Title</b><br />
     <%= f.text_field :title %>
+    <%= f.hidden_field :account_id, :value => "#{@account.id}" %>
   </p>
 
   <p>

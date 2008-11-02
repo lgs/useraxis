@@ -4,6 +4,7 @@
 # Table name: feeds
 #
 #  id          :integer(11)     not null, primary key
+#  account_id  :integer(11)     not null, f key
 #  feed_url_id :integer(11)
 #  title       :string(255)
 #  author      :string(255)
@@ -17,7 +18,10 @@
 #
 
 class Feed < ActiveRecord::Base
+
+  belongs_to :account
   belongs_to :feed_url
+
   validates_uniqueness_of :title, :scope => [:link]
   validates_presence_of :feed_url_id
   validates_numericality_of :feed_url_id

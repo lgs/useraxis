@@ -1,11 +1,15 @@
 class FeedUrlsController < ApplicationController
-  #before_filter :authenticate
+ 
+  # before_filter :authenticate
   before_filter :login_required
+  before_filter :find_account
   
   # GET /feed_urls
   # GET /feed_urls.xml
   def index
-    @feed_urls = FeedUrl.find(:all)
+    #@feed_urls = FeedUrl.find(:all)
+    #@feed_urls = @account.feed_urls.collect { |f| f.feed_url }
+    @feed_urls = FeedUrl.find_all_by_account_id(@account.id)
 
     respond_to do |format|
       format.html # index.html.erb

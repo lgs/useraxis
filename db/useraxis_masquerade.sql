@@ -48,7 +48,7 @@ CREATE TABLE `accounts` (
 
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,1,'lgs','luca.soave@gmail.com','27b18dc3ce30bd10e49bc6206661f8c4dd616ba6','1bdcf312eefb169da1f4cfa536e4332819ead0ba',NULL,NULL,NULL,NULL,'2008-10-17 18:06:51','2008-10-17 18:06:31','2008-10-29 21:05:33',NULL,'2008-10-29 21:05:33',0),(2,1,'paty','novara.laura@gmail.com','c2c04550a9e684d716451de25728ad27a03a66fc','77188a48cbbfdc7862f7e080ff7dbc3aeefc9b84',NULL,NULL,NULL,NULL,'2008-10-18 11:12:28','2008-10-18 11:09:06','2008-10-24 09:46:16',NULL,'2008-10-24 09:46:16',0),(3,1,'admin','admin@useraxis.org','1edcff84beeb58e76f2782e84ffc2ecf8262b829','47a0f4d54a3d0c34832c5b4e2eae78517824aef4',NULL,NULL,NULL,NULL,'2008-10-18 14:31:14','2008-10-18 14:29:30','2008-10-20 17:34:27',NULL,'2008-10-20 17:34:27',0);
+INSERT INTO `accounts` VALUES (1,1,'lgs','luca.soave@gmail.com','27b18dc3ce30bd10e49bc6206661f8c4dd616ba6','1bdcf312eefb169da1f4cfa536e4332819ead0ba',NULL,NULL,NULL,NULL,'2008-10-17 18:06:51','2008-10-17 18:06:31','2008-11-02 10:21:32',NULL,'2008-11-02 10:21:32',0),(2,1,'paty','novara.laura@gmail.com','c2c04550a9e684d716451de25728ad27a03a66fc','77188a48cbbfdc7862f7e080ff7dbc3aeefc9b84',NULL,NULL,NULL,NULL,'2008-10-18 11:12:28','2008-10-18 11:09:06','2008-11-02 09:28:34',NULL,'2008-11-02 09:28:34',0),(3,1,'admin','admin@useraxis.org','1edcff84beeb58e76f2782e84ffc2ecf8262b829','47a0f4d54a3d0c34832c5b4e2eae78517824aef4',NULL,NULL,NULL,NULL,'2008-10-18 14:31:14','2008-10-18 14:29:30','2008-11-02 10:07:07',NULL,'2008-11-02 10:07:07',0);
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,13 +102,14 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `feed_urls`;
 CREATE TABLE `feed_urls` (
   `id` int(11) NOT NULL auto_increment,
+  `account_id` int(11) NOT NULL,
   `feed_url` varchar(255) default NULL,
   `title` varchar(255) default NULL,
   `star` varchar(255) default NULL,
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `feed_urls`
@@ -116,7 +117,7 @@ CREATE TABLE `feed_urls` (
 
 LOCK TABLES `feed_urls` WRITE;
 /*!40000 ALTER TABLE `feed_urls` DISABLE KEYS */;
-INSERT INTO `feed_urls` VALUES (1,'http://feeds.delicious.com/v2/rss/lgsicious','My delicious',NULL,'2008-10-30 21:12:47','2008-10-30 21:12:47');
+INSERT INTO `feed_urls` VALUES (1,1,'http://feeds.delicious.com/v2/rss/lgsicious','delicious feeds by luca',NULL,'2008-11-02 10:06:12','2008-11-02 10:06:12'),(2,3,'http://feeds.delicious.com/v2/rss/','delicious home',NULL,'2008-11-02 10:08:05','2008-11-02 10:08:05');
 /*!40000 ALTER TABLE `feed_urls` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +128,8 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `feeds`;
 CREATE TABLE `feeds` (
   `id` int(11) NOT NULL auto_increment,
-  `feed_url_id` int(11) default NULL,
+  `account_id` int(11) NOT NULL,
+  `feed_url_id` int(11) NOT NULL,
   `title` varchar(255) default NULL,
   `author` varchar(255) default NULL,
   `link` varchar(255) default NULL,
@@ -138,7 +140,7 @@ CREATE TABLE `feeds` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `feeds`
@@ -146,7 +148,7 @@ CREATE TABLE `feeds` (
 
 LOCK TABLES `feeds` WRITE;
 /*!40000 ALTER TABLE `feeds` DISABLE KEYS */;
-INSERT INTO `feeds` VALUES (1,1,'YouTube - Il canale di GoogleDevelopers','','http://www.youtube.com/GoogleDevelopers','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 16:33:13','2008-10-30 22:28:26','2008-10-30 22:28:26'),(2,1,'Economics of Online Video 2: Unit Cost Structure','','http://www.alleyinsider.com/2007/9/economics_of_on','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 16:06:32','2008-10-30 22:28:26','2008-10-30 22:28:26'),(3,1,'Tailrank is Taking a Gliding Lesson','','http://tailrank.com/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 15:12:30','2008-10-30 22:28:26','2008-10-30 22:28:26'),(4,1,'Google Abandons Standards, Forks OpenID at The NeoSmart Files','','http://neosmart.net/blog/2008/google-doesnt-use-openid','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 14:56:20','2008-10-30 22:28:26','2008-10-30 22:28:26'),(5,1,'YouTube - Video: RSS in Plain English','','http://www.youtube.com/watch?v=0klgLsSxGsU&amp;eurl=http://www.commoncraft.com/rss_plain_english','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 14:32:18','2008-10-30 22:28:26','2008-10-30 22:28:26'),(6,1,'2008 Startup School','','http://startupschool.org/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 10:44:21','2008-10-30 22:28:26','2008-10-30 22:28:26'),(7,1,'55-250, confronta prezzi e offerte 55-250 su Trova Prezzi','','http://www.trovaprezzi.it/prezzo_accessori-fotografia_55-250.aspx','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-28 13:51:38','2008-10-30 22:28:26','2008-10-30 22:28:26'),(8,1,'Rails Envy: Ruby on Rails Rake Tutorial (aka. How rake turned me into an alcoholic)','','http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 14:55:29','2008-10-30 22:28:26','2008-10-30 22:28:26'),(9,1,'canon 450D - Confronta i prezzi e le opinioni dei consumatori su Ciao','','http://www.ciao.it/sr/q-canon+450D','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 12:30:39','2008-10-30 22:28:26','2008-10-30 22:28:26'),(10,1,'Fotocamere Digitali canon 450d: confronta modelli e prezzi fotocamere digitali canon 450d. - ShoppyDoo','','http://www.shoppydoo.it/prezzi-fotocamere_digitali-canon_450d.html','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 12:30:18','2008-10-30 22:28:26','2008-10-30 22:28:26'),(11,1,'canon 450d | Prezzi e Offerte Fotocamere digitali - Kelkoo IT','','http://shopping.kelkoo.it/ctl/do/search?catId=124901&amp;siteSearchQuery=canon+450d','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:58:12','2008-10-30 22:28:26','2008-10-30 22:28:26'),(12,1,'Canon eos 450d, confronta prezzi e offerte canon eos 450d su Trova Prezzi','','http://www.trovaprezzi.it/categoria.aspx?libera=canon+eos+450d&amp;id=5&amp;prezzomin=&amp;prezzomax=&amp;sbox=sb&amp;page=1&amp;sort=Prezzo&amp;sortdir=0','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:45:21','2008-10-30 22:28:26','2008-10-30 22:28:26'),(13,1,':: P R O K O O ::','','http://www.prokoo.com/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:34:22','2008-10-30 22:28:26','2008-10-30 22:28:26'),(14,1,'Fotocamere digitali, macchine fotografiche digitali, vendita macchine fotografiche su Digitalfoto','','http://www.digitalfoto.it/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:33:48','2008-10-30 22:28:26','2008-10-30 22:28:26'),(15,1,'Canon eos 450d, confronta prezzi e offerte canon eos 450d su Trova Prezzi','','http://www.trovaprezzi.it/categoria.aspx?libera=canon+eos+450d&amp;id=5&amp;prezzoMin=&amp;prezzoMax=&amp;sbox=sb','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:11:35','2008-10-30 22:28:26','2008-10-30 22:28:26');
+INSERT INTO `feeds` VALUES (1,1,1,'wavethenavel.com Blog Archive » Bootstrapping a Dreamhost Account for Rails and Git','','http://www.wavethenavel.com/jonathanpenn/2008/09/08/bootstrapping-a-dreamhost-account-for-rails-and-git/','http://delicious.com/lgsicious','Delicious/lgsicious','Bootstrapping a Dreamhost Account for Rails and Git','2008-11-01 12:55:53','2008-11-02 10:10:33','2008-11-02 10:10:33'),(2,1,1,'YouTube - Il canale di GoogleDevelopers','','http://www.youtube.com/GoogleDevelopers','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 16:33:13','2008-11-02 10:10:33','2008-11-02 10:10:33'),(3,1,1,'Economics of Online Video 2: Unit Cost Structure','','http://www.alleyinsider.com/2007/9/economics_of_on','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 16:06:32','2008-11-02 10:10:33','2008-11-02 10:10:33'),(4,1,1,'Tailrank is Taking a Gliding Lesson','','http://tailrank.com/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 15:12:30','2008-11-02 10:10:33','2008-11-02 10:10:33'),(5,1,1,'Google Abandons Standards, Forks OpenID at The NeoSmart Files','','http://neosmart.net/blog/2008/google-doesnt-use-openid','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 14:56:20','2008-11-02 10:10:33','2008-11-02 10:10:33'),(6,1,1,'YouTube - Video: RSS in Plain English','','http://www.youtube.com/watch?v=0klgLsSxGsU&amp;eurl=http://www.commoncraft.com/rss_plain_english','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 14:32:18','2008-11-02 10:10:33','2008-11-02 10:10:33'),(7,1,1,'2008 Startup School','','http://startupschool.org/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-30 10:44:21','2008-11-02 10:10:33','2008-11-02 10:10:33'),(8,1,1,'55-250, confronta prezzi e offerte 55-250 su Trova Prezzi','','http://www.trovaprezzi.it/prezzo_accessori-fotografia_55-250.aspx','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-28 13:51:38','2008-11-02 10:10:33','2008-11-02 10:10:33'),(9,1,1,'Rails Envy: Ruby on Rails Rake Tutorial (aka. How rake turned me into an alcoholic)','','http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 14:55:29','2008-11-02 10:10:33','2008-11-02 10:10:33'),(10,1,1,'canon 450D - Confronta i prezzi e le opinioni dei consumatori su Ciao','','http://www.ciao.it/sr/q-canon+450D','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 12:30:39','2008-11-02 10:10:33','2008-11-02 10:10:33'),(11,1,1,'Fotocamere Digitali canon 450d: confronta modelli e prezzi fotocamere digitali canon 450d. - ShoppyDoo','','http://www.shoppydoo.it/prezzi-fotocamere_digitali-canon_450d.html','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 12:30:18','2008-11-02 10:10:33','2008-11-02 10:10:33'),(12,1,1,'canon 450d | Prezzi e Offerte Fotocamere digitali - Kelkoo IT','','http://shopping.kelkoo.it/ctl/do/search?catId=124901&amp;siteSearchQuery=canon+450d','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:58:12','2008-11-02 10:10:33','2008-11-02 10:10:33'),(13,1,1,'Canon eos 450d, confronta prezzi e offerte canon eos 450d su Trova Prezzi','','http://www.trovaprezzi.it/categoria.aspx?libera=canon+eos+450d&amp;id=5&amp;prezzomin=&amp;prezzomax=&amp;sbox=sb&amp;page=1&amp;sort=Prezzo&amp;sortdir=0','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:45:21','2008-11-02 10:10:33','2008-11-02 10:10:33'),(14,1,1,':: P R O K O O ::','','http://www.prokoo.com/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:34:22','2008-11-02 10:10:33','2008-11-02 10:10:33'),(15,1,1,'Fotocamere digitali, macchine fotografiche digitali, vendita macchine fotografiche su Digitalfoto','','http://www.digitalfoto.it/','http://delicious.com/lgsicious','Delicious/lgsicious','','2008-10-27 10:33:48','2008-11-02 10:10:33','2008-11-02 10:10:33'),(16,3,2,'100+ Incredible Open Courseware Resources for Science Geeks | Eduk8','','http://www.advantageedu.com/blog/2008/10/100-incredible-open-courseware-resources-for-science-geeks/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(17,3,2,'GTD: Getting Things Done With Microsoft OneNote','','http://lifehacker.com/5069230/getting-things-done-with-microsoft-onenote','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(18,3,2,'The Simple Dollar » 25 Useful Pieces Of Free (and Open) Software for Macs','','http://www.thesimpledollar.com/2008/11/01/25-useful-pieces-of-free-and-open-software-for-macs/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(19,3,2,'The Lost Years & Last Days of David Foster Wallace : Rolling Stone','','http://www.rollingstone.com/news/story/23638511/the_lost_years__last_days_of_david_foster_wallace/print','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(20,3,2,'htaccess Cheatsheet | marketing . web . design','','http://www.zachgraeve.com/2008/10/29/htaccess-cheatsheet/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(21,3,2,'70+ Cheat Sheet Resources for Web Designers | Design And Marketing Blog','','http://digitallabz.com/blogs/70-cheat-sheet-resources-for-web-designers.html','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(22,3,2,'Exclusive: The Lego Minifig Timeline','','http://gizmodo.com/5070884/exclusive-the-lego-minifig-timeline','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(23,3,2,'Ten things you don’t know about black holes | Bad Astronomy | Discover Magazine','','http://blogs.discovermagazine.com/badastronomy/2008/10/30/ten-things-you-dont-know-about-black-holes/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(24,3,2,'Web Development Toolbox: 120+ New Tools for Web Development','','http://mashable.com/2008/11/01/web-development-tools/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(25,3,2,'Encoding a Photoshop Mockup into XHTML & CSS | Blog.SpoonGraphics','','http://www.blog.spoongraphics.co.uk/tutorials/encoding-a-photoshop-mockup-into-xhtml-css','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(26,3,2,'50+ Must Read Web Design for ROI, Usability and SEO Articles | SEOptimise','','http://www.seoptimise.com/blog/2008/10/50-must-read-web-design-for-roi-usability-and-seo-articles.html','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(27,3,2,'Sarah Palin speaks on the First Amendment - Glenn Greenwald - Salon.com','','http://www.salon.com/opinion/greenwald/2008/10/31/palin/index.html','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(28,3,2,'Microdocs: Home','','http://www.stanford.edu/group/microdocs/index.html','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(29,3,2,'統合スパムフィルタ「スパムちゃんぷるー」のデータに基づくDNSBL(β)','','http://spam-champuru.livedoor.com/dnsbl/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34'),(30,3,2,'10 Principles of the Logo Design Masters - VECTORTUTS','','http://vectortuts.com/articles/web-roundups/10-principles-of-the-logo-design-masters/','http://delicious.com/','Delicious hotlist','','2008-11-02 10:10:34','2008-11-02 10:10:34','2008-11-02 10:10:34');
 /*!40000 ALTER TABLE `feeds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +460,7 @@ CREATE TABLE `usernames` (
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `index_usernames_on_login_name` (`login_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usernames`
@@ -466,7 +468,7 @@ CREATE TABLE `usernames` (
 
 LOCK TABLES `usernames` WRITE;
 /*!40000 ALTER TABLE `usernames` DISABLE KEYS */;
-INSERT INTO `usernames` VALUES (13,1,1,'lgsicious','2008-10-24 09:00:34','2008-10-24 09:00:34'),(14,1,7,'lgswitter','2008-10-24 09:27:54','2008-10-24 09:27:54'),(15,2,1,'lapaty','2008-10-24 10:03:31','2008-10-24 10:03:31'),(16,1,2,'lgsfm','2008-10-24 12:41:18','2008-10-24 12:41:18'),(17,1,5,'lgsff','2008-10-24 12:57:14','2008-10-24 12:57:14');
+INSERT INTO `usernames` VALUES (13,1,1,'lgsicious','2008-10-24 09:00:34','2008-10-24 09:00:34'),(14,1,7,'lgswitter','2008-10-24 09:27:54','2008-10-24 09:27:54'),(15,2,1,'lapaty','2008-10-24 10:03:31','2008-10-24 10:03:31'),(16,1,2,'lgsfm','2008-10-24 12:41:18','2008-10-24 12:41:18'),(17,1,5,'lgsff','2008-10-24 12:57:14','2008-10-24 12:57:14'),(18,3,1,'useraxis','2008-11-01 09:26:23','2008-11-01 09:26:23');
 /*!40000 ALTER TABLE `usernames` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -479,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2008-10-30 22:39:57
+-- Dump completed on 2008-11-02 10:23:00
