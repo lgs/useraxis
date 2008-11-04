@@ -47,7 +47,8 @@ class ServicesController < ApplicationController
 
     #redirect_to :controller => 'usernames', :action => 'new'
     @service = Service.find(params[:id])
-    @username = @service.usernames.new
+    ###  modifica 5 nov 00:30 ### @username = @service.usernames.new
+    @username = Username.find(params[:id])
 
     respond_to do |format|
       format.html # new.html.erb
