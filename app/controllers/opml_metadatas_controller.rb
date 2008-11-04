@@ -1,11 +1,16 @@
 class OpmlMetadatasController < ApplicationController
 
   before_filter :login_required
+  before_filter :find_account
 
   # GET /opml_metadatas
   # GET /opml_metadatas.xml
   def index
-    @opml_metadatas = OpmlMetadata.find(:all)
+    #@opml_metadatas = OpmlMetadata.find(:all)
+    #@opml_metadatas = @account.opml_metadatas.collect { |m| m.metadata }
+
+    @opml_metadatas = OpmlMetadata.find_all_by_account_id(@account.id)
+
 
     respond_to do |format|
       format.html # index.html.erb

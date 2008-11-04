@@ -1,11 +1,10 @@
 class CreateOpmlMetadatas < ActiveRecord::Migration
   def self.up
     create_table :opml_metadatas do |t|
-      t.integer :size
+      t.integer :account_id, :null => false 
+      t.integer :size, :db_file_id
       t.string :content_type
       t.string :filename
-      t.integer :db_file_id
-
       t.timestamps
     end
   end

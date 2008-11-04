@@ -9,6 +9,7 @@
   <p>
     <label for="opml_metadata">Upload your OPML feed:</label>
     <%= f.file_field :uploaded_data %>
+    <%= f.hidden_field :account_id, :value => "#{@account.id}" %>
   </p>
 
   <p>
