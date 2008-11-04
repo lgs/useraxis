@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
+  #map.with_options :controller => 'home' do |account|
+  # account.home ':account', :action => 'index'
+  #end
+
   map.resources :feed_urls
   map.resources :home
   map.connect '/search', :controller => 'home', :action => 'search'
