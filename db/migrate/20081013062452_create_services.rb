@@ -13,7 +13,7 @@ class CreateServices < ActiveRecord::Migration
       { :servicename => 'friendfeed', :url => 'http://friendfeed.com/' },
       { :servicename => 'librarything', :url => 'http://www.librarything.com/' },
       { :servicename => 'twitter', :url => 'http://twitter.com/' }
-    ])   # ['delicious', 'lastfm', 'linkedin', 'flickr', 'friendfeed']
+    ]) 
   end
 
   def self.down

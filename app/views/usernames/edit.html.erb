@@ -3,10 +3,6 @@
 <% form_for(@username) do |f| %>
   <%= f.error_messages %>
 
-  <!-- p>
-    <# %= image_tag("/images/sites_icons/#{@service.servicename}.png") %>
-    <# %= @service.servicename-%><%= " username" %>
-  </p -->
   <p>
     <%= f.label :username %><br />
     <%= f.text_field :login_name %>
