@@ -105,6 +105,7 @@ class FeedUrl < ActiveRecord::Base
       if (Feed.find_by_link(link)).blank?
         atom_feed = Feed.new
         atom_feed.feed_url = self
+        atom_feed.account_id = account_id
         atom_feed.site_link = site_link
         atom_feed.site_title = site_title
         atom_feed.title = (item/:title).inner_html

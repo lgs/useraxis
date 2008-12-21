@@ -7,8 +7,6 @@ class FeedUrlsController < ApplicationController
   # GET /feed_urls
   # GET /feed_urls.xml
   def index
-    #@feed_urls = FeedUrl.find(:all)
-    #@feed_urls = @account.feed_urls.collect { |f| f.feed_url }
     @feed_urls = FeedUrl.find_all_by_account_id(@account.id)
 
     respond_to do |format|
@@ -26,6 +24,7 @@ class FeedUrlsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @feed_url }
     end
+
   end
 
   # GET /feed_urls/new
@@ -46,13 +45,16 @@ class FeedUrlsController < ApplicationController
 
   # POST /feed_urls
   # POST /feed_urls.xml
-  def create
+  def create 
     @feed_url = FeedUrl.new(params[:feed_url])
 
     respond_to do |format|
       if @feed_url.save
         flash[:notice] = 'FeedUrl was successfully created.'
-        format.html { redirect_to(@feed_url) }
+        ####################################################### ok /:account/feed_urls
+        #format.html { redirect_to(@feed_url) }
+        ##format.html { redirect_to :feed_urls, @feed_url }
+        format.html { redirect_to :feed_urls }
         format.xml  { render :xml => @feed_url, :status => :created, :location => @feed_url }
       else
         format.html { render :action => "new" }
@@ -69,7 +71,12 @@ class FeedUrlsController < ApplicationController
     respond_to do |format|
       if @feed_url.update_attributes(params[:feed_url])
         flash[:notice] = 'FeedUrl was successfully updated.'
-        format.html { redirect_to(@feed_url) }
+        ############################# /:account/feed_urls ###############################
+        #format.html { redirect_to(@feed_url) }
+        ##format.html { redirect_to :controller => feed_urls, :action => "update", :method => :put }
+        ###format.html { redirect_to :feed_urls, :url => {:method => "put"} }
+
+        format.html { redirect_to :feed_urls }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

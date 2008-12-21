@@ -1,7 +1,7 @@
 ENV['RAILS_ENV'] ||= 'development'
 ENV['GEM_PATH'] = '/home/useraxis/.gems:/usr/lib/ruby/gems/1.8'
 
-RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -42,11 +42,12 @@ Rails::Initializer.run do |config|
   # My own
   config.gem 'gnip-gnip', :lib => 'gnip', :version => '2.0.3'
 
+  config.gem 'RedCloth', :version => '>= 3.301', :source => 'http://code.whytheluckystiff.net/'
+
 end
 # For mislav's will paginate plugin
 gem 'mislav-will_paginate', '~> 2.2'
 require 'will_paginate'
 
 WhiteListHelper.tags.delete %w(object th)
-
 

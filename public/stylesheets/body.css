@@ -7,7 +7,7 @@
 body {
 padding : 0;
 margin : 0;
-font : 0.74em Arial, sans-serif;
+font : 0.74em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, sans-serif;
 line-height : 1.5em;
 background : #393939;
 color : #fff;
@@ -26,13 +26,13 @@ p {
 margin : 5px 0;
 }
 h1 {
-font : bold 1.8em Arial, Sans-Serif;
+font : bold 1.8em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 padding : 8px 0 4px 0;
 margin : 0;
 letter-spacing : -1px;
 }
 h2 {
-font : bold 1.6em Arial, Sans-Serif;
+font : bold 1.6em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 letter-spacing : -1px;
 }
 h3 {
@@ -62,10 +62,10 @@ margin : 0;
 padding : 3px 5px 3px 35px;
 border : 1px solid #666;
 list-style-type : decimal-leading-zero;
-font-family : Courier;
+font-family : 'Lucida Grande', Helvetica, Arial, sans-serif, Courier;
 }
 .code code {
-font-family : Monaco, "Courier New", Tahoma;
+font-family : 'Lucida Grande', Helvetica, Arial, sans-serif, "Courier New", Tahoma;
 font-size : 1.2em;
 }
 .code li {
@@ -139,7 +139,7 @@ height : 85px;
 margin-bottom : 25px;
 }
 #top h1 {
-font : bold 2.6em Arial, Sans-Serif;
+font : bold 2.6em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 padding : 20px 0 0 0;
 margin : 0;
 letter-spacing : 1px;
@@ -149,7 +149,7 @@ color : #d0eb55;
 text-decoration : none;
 }
 #top h2 {
-font : 0.9em Arial, Sans-Serif;
+font : 0.9em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 letter-spacing : 0;
 color : #868686;
 margin : 0;
@@ -233,7 +233,7 @@ text-decoration : underline;
 }
 .right_side h3 {
 color : #eee;
-font : bold 1.2em Arial, Sans-Serif;
+font : bold 1.2em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 background : url(images/rmenuhead.gif) no-repeat top;
 width : 202px;
 height : 30px;
@@ -267,13 +267,13 @@ padding : 20px 0 0 0;
 background : inherit;
 padding : 0;
 margin : 0;
-font : 1.8em verdana, Arial, Sans-Serif;
+font : 1.8em 'Lucida Grande', Helvetica, Arial, sans-serif, verdana, Arial, Sans-Serif;
 }
 #left_side .mpart h3 {
 background : inherit;
 padding : 0;
 margin : 0 0 15px 0;
-font : 0.9em verdana, Arial, Sans-Serif;
+font : 0.9em 'Lucida Grande', Helvetica, Arial, sans-serif, verdana, Arial, Sans-Serif;
 color : #a5a5a5;
 }
 #left_side p {
@@ -298,7 +298,7 @@ background : url(images/commentb.gif) no-repeat top right;
 height : 32px;
 }
 .date a {
-font : bold 1.2em Arial, Sans-Serif;
+font : bold 1.2em 'Lucida Grande', Helvetica, Arial, sans-serif, Arial, Sans-Serif;
 color : #a9bc52;
 background : transparent;
 }

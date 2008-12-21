@@ -1,18 +1,1 @@
-<h1>Listing usernames</h1>
-
-<table>
-  <tr>
-  </tr>
-
-<% for username in @usernames %>
-  <tr>
-    <td><%= link_to 'Show', username %></td>
-    <td><%= link_to 'Edit', edit_username_path(username) %></td>
-    <td><%= link_to 'Destroy', username, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New username', new_username_path %>
+<%= redirect_to   ... ( ho spostato la redirezione nel controller usernames action index )  %>

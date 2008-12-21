@@ -1,0 +1,19 @@
+
+                <div class="content">
+			<div id="main">
+				<%= render :partial => 'shared/openid_settings' %>
+                        	<%= render :partial => 'shared/resources' %>
+				<div id="left_side">
+					<div class="intro">
+						This service is an experiment,<br /> use it at your own risk !
+					</div>
+					<div class="mpart">
+			       			<% if flash[:notice] %><div class="notice"><%=simple_format h(flash[:notice]) %></div><% end %>
+						<% if flash[:error] %><div class="error"><%=simple_format h(flash[:error]) %></div><% end %>
+			 			<%= yield %>
+               	                	</div>
+
+				</div>
+			</div>
+                 </div>
+

@@ -3,11 +3,11 @@
 <p>LifeStream here, refers to the chronological aggregated view of User online activities through the use of some popular social media services.</p>
 
 <% unless @services.empty? %>
-    <% n = 0 %>
+
     <% for service in @services %>
-      <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), service.url + @usernames[n].login_name -%>
-      <% n = n + 1 %>
+      <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), service.url -%>
     <% end %>  <%= link_to 'add/edit', list_services_path -%>
+
 <% else %>
   <table>
     <tr><td>There are no entries, yet.</td></tr> 

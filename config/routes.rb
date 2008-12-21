@@ -1,15 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
-  #map.with_options :controller => 'home' do |account|
-  # account.home ':account', :action => 'index'
-  #end
-
-  map.resources :feed_urls
-  map.resources :home
+  map.resources :lifestream, :controller => "home", :path_prefix => '/:account'
+  map.resources :feed_urls, :path_prefix => '/:account'
   map.connect '/search', :controller => 'home', :action => 'search'
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  #map.root :controller => "home"
-
 
   map.resources :usernames
   map.resources :services, :collection  => { :list => :get }
@@ -23,10 +16,6 @@ ActionController::Routing::Routes.draw do |map|
     account.resources :sites do |sites|
       sites.resources :release_policies
     end
-    #account.resources :services do |services|
-      #services.resources :services, :collection  => { :lastfm => :get, :destroy => :delete }
-      #services.resources 'di_prova', :member  => { :lastfm => :get, :destroy => :delete }
-    #end
     account.resource :yubikey_association
   end
   
@@ -42,7 +31,7 @@ ActionController::Routing::Routes.draw do |map|
     sessions.login 'login', :action => 'new'
     sessions.logout 'logout', :action => 'destroy'
   end
-  
+
   map.with_options :controller => 'server' do |server|
     server.formatted_server 'server.:format', :action => 'index'
     server.server 'server', :action => 'index'
@@ -64,8 +53,10 @@ ActionController::Routing::Routes.draw do |map|
     info.home '', :action => 'index'
     info.help 'help', :action => 'help'
     info.safe_login 'safe-login', :action => 'safe_login'
+    info.about 'about', :action => 'about'
+    info.contact 'contact', :action => 'contact'
   end
-  
+
   map.with_options :controller => 'accounts' do |account|
     account.formatted_identity ':account.:format', :action => 'show'
     account.identity ':account', :action => 'show'

@@ -5,8 +5,9 @@
                                                 <ul>
                                         	   <li><%= link_to 'lifestream collection', services_path, 'services' => [] %></li>
                                                    <li><%= link_to 'OPML feed', new_opml_metadata_path %></li>
-                                                   <li><%= link_to 'feed aggregator',  '/home' %></li>
-                                                   <li><%= link_to 'add a new feed',  feed_urls_path %></li>
+                                                   <!-- # li><%= link_to 'feed aggregator', '/lifestream' %></li -->
+                                                   <li><%= link_to 'feed aggregator', lifestream_index_path(@account) %></li>
+                                                   <li><%= link_to 'add a new feed', feed_urls_path(@account) %></li>
                                                    <%= image_tag("/images/rss.jpg") -%>
                                                 </ul>
                                         </div>

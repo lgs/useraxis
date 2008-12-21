@@ -2,9 +2,9 @@ class ServicesController < ApplicationController
 
   before_filter :login_required
   before_filter :find_account
+  before_filter :find_usernames, :only => [:index]
 
   def list
-    #@services = @account.usernames.collect { |s| s.service }
     @services = Service.find(:all)
   end
 
@@ -12,12 +12,6 @@ class ServicesController < ApplicationController
   # GET /services.xml
   def index
     @services = @account.usernames.collect { |s| s.service }
-    #@services = Service.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @services }
-    end
   end
 
   # GET /services/1
@@ -44,11 +38,23 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+    
+    #find_username
 
-    #redirect_to :controller => 'usernames', :action => 'new'
+    ##### running 
     @service = Service.find(params[:id])
-    ###  modifica 5 nov 00:30 ### @username = @service.usernames.new
-    @username = Username.find(params[:id])
+    if @username = @service.usernames.find_by_account_id(@account.id) 
+    else
+       @username = @service.usernames.new 
+    end
+
+    #@username = @service.usernames.new
+    ##@username = @service.usernames.find_by_service_id(@service.id)
+    ###@username = @service.usernames.find(params[:id])
+    
+    #   dal controller usernames : 
+    #   @username = Username.find(params[:id])
+    ##########################################
 
     respond_to do |format|
       format.html # new.html.erb
@@ -102,4 +108,19 @@ class ServicesController < ApplicationController
     end
   end
 
+  private
+
+  def find_usernames
+    #@usernames = @service.usernames.find_all_by_account_id(@account.id) 
+    @usernames = @account.usernames.find_all_by_account_id(@account.id)
+  end
+
 end
+
+
+
+
+
+
+
+

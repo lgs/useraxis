@@ -5,12 +5,16 @@ class UsernamesController < ApplicationController
   # GET /usernames
   # GET /usernames.xml
   def index
-    @usernames = Username.find(:all)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @usernames }
-    end
+    redirect_to  services_path
+
+    #@usernames = Username.find(:all)
+    ##@usernames = @account.usernames.collect { |s| s.service }
+
+    ##respond_to do |format|
+    ##  format.html # index.html.erb
+    ##  format.xml  { render :xml => @usernames }
+    ##end
   end
 
   # GET /usernames/1

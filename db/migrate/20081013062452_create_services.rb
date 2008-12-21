@@ -6,8 +6,8 @@ class CreateServices < ActiveRecord::Migration
     add_index :services, :servicename, :unique => true
 
     Service.create([
-      { :servicename => 'delicious', :url => 'http://feeds.delicious.com/v2/rss/' },
-      { :servicename => 'lastfm', :url => 'http://lastfm.com/' },
+      { :servicename => 'delicious', :url => 'http://delicious.com/' },
+      { :servicename => 'lastfm', :url => 'http://www.lastfm.it/user/' },
       { :servicename => 'linkedin', :url => 'http://www.linkedin.com/in/' },
       { :servicename => 'flickr', :url => 'http://flickr.com/' },
       { :servicename => 'friendfeed', :url => 'http://friendfeed.com/' },

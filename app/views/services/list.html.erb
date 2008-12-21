@@ -1,14 +1,15 @@
-<h1>Listing services</h1>
+<h2>Choose a service to add/edit</h2><br />
+
+
 <table>
-<br />
-<% for service in @services %>
-  <tr>
-    <td><%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), service -%><%= link_to service.servicename, service -%></td>
-    <td><%= link_to 'Show', service %></td>
-    <td><%= link_to 'Edit', edit_service_path(service) %></td>
-    <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+
+  <% for service in @services %>
+    <tr><td>
+      <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), edit_service_path(service) -%>
+      <%= link_to service.servicename, edit_service_path(service) -%>
+    </td></tr>
+  <% end %>
+ 
 </table>
 
-<%= link_to 'New service', new_service_path %>
+<!-- # %= link_to 'New service', new_service_path % -->

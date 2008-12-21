@@ -6,8 +6,7 @@ class CreateUsernames < ActiveRecord::Migration
       t.string :login_name, :null => false
       t.timestamps
     end
-    #login_name is not unique, you can have same login_name for different services
-    #add_index :usernames, :login_name, :unique => true
+    add_index :usernames, [:service_id, :login_name], :unique => true
   end
 
   def self.down

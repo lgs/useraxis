@@ -5,9 +5,10 @@
 
     <p>
       <%= image_tag("/images/sites_icons/#{@service.servicename}.png") %>
-      <%= @service.servicename-%><%= " username" %>
+      <%= f.label @service.servicename -%>
     </p>
     <p>
+      <!-- %= f.label :username %><br / -->
       <%= f.text_field :login_name %>
       <%= f.hidden_field :account_id, :value => "#{@account.id}" %>
       <%= f.hidden_field :service_id, :value => "#{@service.id}" %>
@@ -18,5 +19,7 @@
   <% end %>
 
 
-<%= link_to 'Show', @service %> |
+<!-- %= link_to 'Show', @service %> | -->
 <%= link_to 'Back', services_path %>
+
+

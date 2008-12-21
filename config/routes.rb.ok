@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :lifestream, :controller => "home", :path_prefix => '/:account'
+  map.resources :feed_urls, :path_prefix => '/:account'              #, :method => :get
+  map.connect '/search', :controller => 'home', :action => 'search'
+
+  map.resources :usernames
+  map.resources :services, :collection  => { :list => :get }
   map.resources :opml_metadatas
 
   map.resource :account,
@@ -9,9 +15,6 @@ ActionController::Routing::Routes.draw do |map|
     end
     account.resources :sites do |sites|
       sites.resources :release_policies
-    end
-    account.resources :services do |services|
-      services.resources :services, :collection  => { :destroy => :delete }
     end
     account.resource :yubikey_association
   end

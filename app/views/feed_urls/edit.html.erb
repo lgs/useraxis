@@ -1,8 +1,8 @@
 <h1>Editing feed_url</h1>
 
 <%= error_messages_for :feed_url %>
+<% form_for @feed_url, :url => { :action => "update" } do |f| %>
 
-<% form_for(@feed_url) do |f| %>
   <p>
     <b>Feed url</b><br />
     <%= f.text_field :feed_url %>
@@ -12,12 +12,12 @@
     <b>Title</b><br />
     <%= f.text_field :title %>
     <%= f.hidden_field :account_id, :value => "#{@account.id}" %>
-  </p>
+  </p>      
 
   <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @feed_url %> |
+<%= link_to 'Show', feed_url_path(@account) %> |
 <%= link_to 'Back', feed_urls_path %>
