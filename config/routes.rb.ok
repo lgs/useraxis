@@ -26,11 +26,19 @@ ActionController::Routing::Routes.draw do |map|
     pwd.forgot_password 'forgot_password', :action => 'new'
     pwd.reset_password  'reset_password/:id', :action => 'edit'
   end
-  
-  map.with_options :controller => 'sessions' do |sessions|
-    sessions.login 'login', :action => 'new'
-    sessions.logout 'logout', :action => 'destroy'
+
+  # Public login/logout routes using https protocol
+  map.with_options :protocol => ROUTES_PROTOCOL do |https|
+    https.login 'login', :controller => 'sessions', :action => 'new'
+    https.logout 'logout', :controller => 'sessions', :action => 'destroy'
   end
+
+  
+#  original routing from masquerade
+#  map.with_options :controller => 'sessions' do |sessions|
+#    sessions.login 'login', :action => 'new'
+#    sessions.logout 'logout', :action => 'destroy'
+#  end
   
   map.with_options :controller => 'server' do |server|
     server.formatted_server 'server.:format', :action => 'index'

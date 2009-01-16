@@ -1,0 +1,253 @@
+***************************************************************************************
+1.1.2.1
+FIX: if the event date was formatted using new setting, the event date was incorrect.
+***************************************************************************************
+1.1.2.0
+
+FEATURES ADDED:
+
+** New settings, <bg_color> and <bg_alpha> for <y_left> and <y_right> of the <values> 
+allows showing a color rectangle under y axis values. This might improve readability.
+
+** New settings, <unit> and <unit_position> for <y_left> and <y_right> of the <values> 
+allows showing units near y axis values. 
+
+** a new group of settings:
+
+<digits_after_decimal>
+  <data></data>
+  <percents></percents>
+</digits_after_decimal>
+
+was added in two places:
+
+1) <charts><chart><values><y_left> and <charts><chart><values><y_right>. This allows 
+controlling of the number of decimals for the axis values.
+
+2) <charts><chart><graphs><graph><legend>. This allows controlling of the number of
+decimals for the legend values.
+
+
+** <events> was added to <date_formats>, so you could format how the date in the event
+balloon should look like. 
+
+
+** <connect> settng for the <graph> allows displaying  gaps in the line and step graphs
+types, when data is missing. 
+
+
+** <connect> setting is also added for the <scroller>
+
+
+** JavaScript functions are cued now - previously you could call one JS function at a 
+time and call another only after the chart finished the previous process. Now, you can
+call several functions one after another, without waiting for the chart to finish 
+doing something. The functions are cued and all of them will be executed.
+
+
+** New JavaScript function amProcessCompleted(chart_id, process) added
+This function is called after some process initialized by some JS function is finished.
+For example, if you make the chart to reload data by calling reloadData function, after
+the data is reloaded, the chart will call amProcessCompleted function and the "process"
+parameter will be "reloadData" - the same as the function name you called.  
+
+
+FIXES:
+
+** The first data set was always selected as main, even the 
+<main_drop_down selected="true"></main_drop_down> was set for some other data set.  
+
+
+** events, hidden with javascript appeared again after scrolling.
+
+
+** when the empty data was passed with setData(data) JS function, the chart didn't
+display the "no data" message.
+
+***************************************************************************************
+1.1.1.0
+
+FEATURES ADDED:
+
+** from and to dates
+You can set custom "from" and "to" dates now in:
+<period_selector>
+  ...
+  <from></from>
+  <to></to>
+
+** dashed horizontal and vertical lines can be used with events
+
+** border_alpha setting for events added
+
+  
+FIXES:
+** The scrollbar graph dropped to 0 if the values were missing, now it connects the points 
+as the main graph does.
+
+** If settings were passed directly from HTML, context menu settings were ignored.
+
+** resize_pointer_color was ignored.
+
+** chart_id wasn't passed to JS functions after setSettings function was used. 
+
+***************************************************************************************
+1.1.0.0
+
+FEATURES ADDED:
+
+**Events in the settings file
+Events can be added directly to the settings file, within <events></events> in the 
+<data_set> section. This will allow you to have all the data in one file only.
+
+**Horizontal and vertical lines (guides)
+The events were extended so that the chart can display horizontal and vertical guides 
+(barriers). Check the new structured_products example to see how this is done. 
+
+**Base date of recalculation
+Previously, when comparing the data sets, the values were recalculated from the 
+selected period first date or from the first date of the data set. Now you can set any 
+base date.  Value of a base date will be used as a base for recalculation. This might be
+useful for structured financial products. You can set the base using <base_data> 
+setting in the <comparing> settings. Check the structured_products example to see how
+this is done. 
+
+**Show / hide events with JavaScript
+You can show/hide events with a new JS functions: flashMovie.showEvents(); and
+flashMovie.hideEvents(); 
+
+**12 or 24 hour format in the legend and axis
+12 hour time format can be displayed in the legend and axis values. To do this, you
+should set <hour_format>12</hour_format> in the date_formats settings. Hours in the 
+data file must always be in 24 hour format. 
+
+**Show comparing legend entries only 
+You can make the legend to display entries of comparing data sets only and not to 
+display the legend entry of a graph by setting <comparing_only> in the graphs's legend
+settings. 
+
+**Hide date in the legend when mouse is away from plot area
+The date in the legend can be hidden when the mouse is not over the plot area. This 
+might help you to avoid overlapping of date and legend entries, as the date takes more 
+space when displaying period instead of single date. To hide the date, set:
+<hide_date_on_period>true</hide_date_on_period> in the chart's legend settings. 
+
+**Disabling interactivity
+You can disable all the interactivity of a chart by setting 
+<interactive>false</interactive> 
+
+**Error messages
+A new group of settings - <error_messages> was added. You can disable error messages,
+set colors and opacity. 
+
+**Keeping selected data sets after setSettings() function
+Previously, after you use setSettings() JavaScript function, the data sets selected by
+user were reset to the initial state. Now the chart keeps the selections. A new 
+parameter to the setSettings function added, in order you don't want to keep the
+selections: setSettings(settings, rebuild, reset_selected) 
+
+BUG FIXES: 
+
+flashMovie.print() and flashMovie.printAsBitmap() functions where not work properly in 
+some cases.
+
+JS functions amClickedOn(chart_id, date, period) and amRolledOver(chart_id, date, period)
+were returning not full date and undefined period in some cases.
+
+JS function on error, amError(chart_id, message) wasn't called when the error occurred.
+
+***************************************************************************************
+
+1.0.2.3
+Bug fix: the first <letter> from <number_format> was ignored. Fixed.
+
+***************************************************************************************
+1.0.2.2
+Bug fix: Events became visible only after scrolling or change of interval. Fixed.
+
+***************************************************************************************
+1.0.2.1
+
+Feature added:
+When comparing the graphs, you could set that the graph's values must be recalculated
+to percents. With a new setting, <recalculate_from_start>, you can set that the first 
+value of a graph would be used as "base" value for the recalculation. Previously only
+the first value of a selected period could be used.  
+
+Improvement: Now, if the data source doesn't have column which should be used as 
+graph's <close> data source, the graph will not have legend entry in the legend. The
+same is with comparing graphs - if the selected for comparing data set doesn't have
+the column which must be used for comparing graph, This data set will not have entry
+in the legend.
+
+Bug fix: <digits_after_decimal><data> setting only added required number of zeros, 
+not rounded the numbers when the data was grouped to a longer periods. 
+
+Bug fix: If the chart had graphs both on left and right axes and also had events,
+the events were displayed for two times instead of one.
+
+***************************************************************************************
+1.0.2.0
+
+Feature added:
+Smoothed lines feature added. Set <smoothed>true</smoothed> in graph's settings to 
+make lines smooth.
+
+"%" is added to Y axis values when charts are compared.
+
+Bug fix: when <equal_spacing> was set to "false" and there were multiple graphs with
+type "column", the columns were displaced incorrectly.
+
+***************************************************************************************
+1.0.1.1
+
+Bug fixes:
+When the <equal_spacing> was set to false, amGetZoom returned wrong "to" value.
+
+JS functions: amRolledOver, amClickedOn, amRolledOverEvent and amClickedOnEvent
+Used not to return chart_id variable. This is fixed now. Note, if you were using these 
+functions before, you should add chart_id variable in front of the others, otherwise your
+script will not work. 
+
+Features added:
+
+New javascript function setSettings(settings, rebuild) allows you to set 
+multiple settings at once.
+
+You can get chart settings using getSettings() JavaScript function.
+
+When the chart finishes exporting it to the image, amReturnImageData(chart_id, data)
+function is called.
+
+***************************************************************************************
+
+1.0.1.0
+
+features added:
+
+* graphs, also comparing graphs can be dashed
+* new legend key type - "line"
+* names of weekdays can be displayed in the legend
+* scrollers selected graph fill color can be defined separately from the graph color
+* uncompareAll() JS function added - deselects all data sets selected for comparing
+
+bugs fixed:
+
+* if user rolled over the event bullet many times, the chart slowed down
+* date input field width was not adjusting if the dates used longer format
+* "to" in the custom period field now shows the last available date of the period
+
+***************************************************************************************
+1.0.0.3
+* bug fix: period selector "from" field didn't accept text color
+* bug fix: x axis values didn't accept text color and size
+***************************************************************************************
+1.0.0.2
+* {average} and {sum} in the legend now displayes average and sum of a selected period
+* Fixed bug with showAll() JavaScript function
+* setZoom() JavaScript function now also deselects the period button
+* if no data was found in the data file, "no_data" error message is displayed
+***************************************************************************************
+1.0.0.1
+* Fixed a bug with events
+***************************************************************************************

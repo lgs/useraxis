@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title><%=h page_title %></title>
+                <meta name="verify-v1" content="fFMVsiiUlFajFQe2lvAlT14N9tbKda/IftwASWdUDXc=" />   
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<% if identity_page? %>
 		<meta http-equiv="X-XRDS-Location" content="<%= formatted_identity_url(:account => @account, :format => :xrds, :protocol => scheme) %>" />
@@ -15,6 +16,7 @@
 		<%= stylesheet_link_tag 'body' %>
 		<%= stylesheet_link_tag 'application' %>
 		<%= javascript_include_tag 'prototype' %>
+                <%= javascript_include_tag 'swfobject' %>
 
     <!-- # %= stylesheet_link_tag 'style', 'pagination', 'jquery.tooltip'%>
     <    #%= javascript_include_tag 'jquery-1.2.6', 'jquery.dimensions', 'jquery.bgiframe', 'jquery.tooltip', 'jquery.hotkeys.js' % -->

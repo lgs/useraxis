@@ -21,4 +21,7 @@ class InfoController < ApplicationController
 
   def contact
   end
+
+  def oauth
+  end
 end

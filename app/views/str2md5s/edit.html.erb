@@ -1,0 +1,12 @@
+<h1>Editing str2md5</h1>
+
+<% form_for(@str2md5) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @str2md5 %> |
+<%= link_to 'Back', str2md5s_path %>

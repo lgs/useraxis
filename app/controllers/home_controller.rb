@@ -1,12 +1,14 @@
 class HomeController < ApplicationController
 
-  before_filter :login_required
-  before_filter :find_account
+  #before_filter :login_required
+  #before_filter :find_account
 
   #
   # index
   #
   def index
+    @account = Account.find(:first, :conditions => ['login = ? AND enabled = ?', params[:account], true])
+    raise ActiveRecord::RecordNotFound if @account.nil?
 
     @feeds = Feed.paginate(:all, 
                            :per_page => 15, 

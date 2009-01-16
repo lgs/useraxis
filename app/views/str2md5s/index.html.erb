@@ -1,0 +1,32 @@
+<h1>Listing str2md5s</h1>
+
+<table>
+  <tr>
+    <%= render(:partial => 'convert') %>
+    <div id="md5"><p>
+      <h1>[ just on del.icio.us at the moment ... ]</h1>
+
+        Would you like to know if an article get interest on del.icio.us ? Try copying and pasting the full URL to above.
+        You will be able to find out by whom has been tagged and other issue but remember, tags on del.icio.us result
+        different if you actually post http://www.example.com/ or http://www.example.com without the last slash.
+        Just like http://www.example.com/index.html and http://www.example.com/index.php generate on del.icio.us,
+        different tags so duble check your cat and paste.
+        <br><br>
+        Just a  W A R N I N G <br><br>this site is really experimental, full of bugs and in my hope
+        will be changing frequently, so use it at your own risk!  <h1>Welcome.</h1>
+
+    </div>
+  </tr>
+
+<% for str2md5 in @str2md5s %>
+  <tr>
+    <td><%= link_to 'Show', str2md5 %></td>
+    <td><%= link_to 'Edit', edit_str2md5_path(str2md5) %></td>
+    <td><%= link_to 'Destroy', str2md5, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New str2md5', new_str2md5_path %>

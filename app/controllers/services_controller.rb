@@ -4,6 +4,9 @@ class ServicesController < ApplicationController
   before_filter :find_account
   before_filter :find_usernames, :only => [:index]
 
+  def lifestream
+  end
+
   def list
     @services = Service.find(:all)
   end

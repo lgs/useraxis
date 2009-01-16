@@ -1,0 +1,5 @@
+    <%= form_remote_tag(:update => "md5",
+                        :url    => { :action => :convert })%>
+    URL: <%= text_field_tag :md5, "http://www.xml.com/pub/a/2004/11/10/delicious.html", {:size => 72} %>
+    <%= submit_tag "search" %>    
+    <!-- %= end_form_tag % -->   

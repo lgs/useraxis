@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^pipingmedia.useraxis.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www.pipingmedia.useraxis.org$
+RewriteRule ^(.*)$ "http\:\/\/pipingmedia\.com" [R=301,L]
+

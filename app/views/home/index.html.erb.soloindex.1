@@ -1,0 +1,42 @@
+     
+     <form id="search_form" name="search" action="/search" method="get">
+       <label>Search</label><input id="search" type="text" name="query" value="<%= params[:query] %>">
+     </form>
+
+     <img src="/images/feed-icon-28x28.png" border="0"><p><div id="header"><h1><%= @account.login  %> feeds</h1></div></p><br />
+
+        <ol class="code">
+           <ul> <% @link_array = []%>
+             <% for feed_item in @feeds%> <% @link_array << MD5::new(feed_item.link )%>
+
+               <li><span class="bullet_icon">»</span>&nbsp;<a title="<%= distance_of_time_in_words(Time.now, feed_item.published)%> ago at <%= feed_item.site_title %>" href="#<%= MD5::new(feed_item.link )%>"><%= feed_item.title %></a> <!-- <span class="sub grey"><%= distance_of_time_in_words(Time.now, feed_item.published)%> ago</span></li> -->
+             <%end%>
+           </ul>
+        </ol>
+      
+           <!-- # a href="http://feedproxy.google.com/PlanetRails"><img src="http://feedproxy.google.com/~fc/PlanetRails?bg=BBBBBB&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a -->
+    
+     <div class="pagination">
+       <%= will_paginate @feeds, :class => "digg_pagination" %>
+     </div>
+
+     <div id="main">
+
+        <div class="left_sub_top"left sub top>
+          <div id="notice">
+            <% if !params[:query].blank? %>
+              Results for "<%= params[:query] %>"
+            <% end %>
+            <% if params[:query].blank? and !params[:page].blank? %>
+              Displaying page <%= params[:page] %>   
+            <% end %>
+          </div>
+
+
+        <div class="right_sub_top">
+          <!-- ###############  "/search"  ########################### -->
+        </div><p></p><br />
+      </div>
+
+</div>  
+

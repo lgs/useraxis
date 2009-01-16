@@ -46,9 +46,14 @@ Rails::Initializer.run do |config|
   config.gem 'mocha', :version => '0.9.0'
 
   # My own
-  config.gem 'gnip-gnip', :lib => 'gnip', :version => '2.0.3'
-
+  config.gem 'gnip-gnip', :lib => 'gnip', :version => '2.0.6'
   config.gem 'RedCloth', :version => '>= 3.301', :source => 'http://code.whytheluckystiff.net/'
+  config.gem 'dj2-postrank', :lib => 'postrank', :version => '0.9.1'
+
+  config.gem 'mechanize', :version => '0.9.0'
+  config.gem 'hpricot', :version => '0.6.164'
+  config.gem 'firewatir', :version => '1.6.2'
+  #config.gem 'skimr', :version => '0.4.1'
 
 end
 # For mislav's will paginate plugin

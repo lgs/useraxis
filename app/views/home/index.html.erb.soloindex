@@ -38,40 +38,5 @@
         </div><p></p><br />
       </div>
 
-<div class="mpart">
-
-       <% if !@feeds.blank? %>
-         <% for feed_item in @feeds%>
-           <div><a name="<%= MD5.new(feed_item.link )%>"></a></div>
-           <div class="post">
-             <div class="title"><h2><a href="<%= h feed_item.link %>"><%= feed_item.title %></a></h2></div>
-             <div class="sub">
-               <h3>Posted <%= distance_of_time_in_words(Time.now, feed_item.published)%> ago at
-               <a href="<%= feed_item.site_link%>"><%= feed_item.site_title %></a></h3>
-             </div>
-             <div class="entry">
-               <p><%= fix_host(feed_item.content, feed_item.site_link) %></p>
-             </div>
-             <div class="entry_bottom"><a href="#top">back to top</a></div>
-             <div class="date"><a href="#" title="#">Comments (11)</a></div>
-           </div>                                          
-         <% end %>
-
-       <% elsif !params[:query].blank? %>
-         <div class="post" style="text-align:center">
-           No results found.
-         </div>
-       <% elsif params[:query].blank? %>
-         There are no feeds added yet. <br />
-         <a href="feed_urls">click here</a> to add.
-       <%end%>
-     </div>     <p></p><br />
-
-     <div class="pagination">
-       <%= will_paginate @feeds, :class => "digg_pagination" %>
-     </div>
-
-     <p></p><br />
-
 </div>  
 
