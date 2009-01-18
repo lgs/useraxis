@@ -15,7 +15,7 @@
     <td><%=h opml_metadata.filename %></td>
     <td><%=h opml_metadata.db_file_id %></td>
     <td><%= link_to 'Show', opml_metadata %></td>
-    <td><%= link_to 'Edit', edit_opml_metadata_path(opml_metadata) %></td>
+    <td><%= link_to 'Edit', edit_opml_metadata_url(opml_metadata) %></td>
     <td><%= link_to 'Destroy', opml_metadata, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -23,4 +23,4 @@
 
 <br />
 
-<%= link_to 'New opml_metadata', new_opml_metadata_path %>
+<%= link_to 'New opml_metadata', new_opml_metadata_url %>

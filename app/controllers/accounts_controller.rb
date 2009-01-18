@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
     begin
       @account.save!
       flash[:notice] = 'Thank you for signing up! We sent you an email containing an activation link.'
-      redirect_to login_path    
+      redirect_to login_url    
     rescue ActiveRecord::RecordInvalid
       render :action => 'new'
     end
@@ -39,7 +39,7 @@ class AccountsController < ApplicationController
     @account = current_account
     if @account.update_attributes(params[:account])
       flash[:notice] = 'Your profile has been updated.'
-      redirect_to edit_account_path(:account => current_account)
+      redirect_to edit_account_url(:account => current_account)
     else
       render :action => 'edit'
     end
@@ -53,10 +53,10 @@ class AccountsController < ApplicationController
       cookies.delete :auth_token
       reset_session
       flash[:notice] = 'Your account has been disabled.'
-      redirect_to home_path
+      redirect_to home_url
     else
       flash[:error] = 'The entered password is wrong.'
-      redirect_to edit_account_path
+      redirect_to edit_account_url
     end
   end
   
@@ -64,13 +64,13 @@ class AccountsController < ApplicationController
     begin
       account = Account.find_and_activate!(params[:id])
       flash[:notice] = 'Your account is activated - you can login now.'
-      redirect_to login_path
+      redirect_to login_url
     rescue ArgumentError, Account::ActivationCodeNotFound
       flash[:error] = 'We could not find any account with the given activation code. Please create a new account.'
-      redirect_to new_account_path
+      redirect_to new_account_url
     rescue Account::AlreadyActivated
       flash[:error] = 'Your account is already activated - please login.'
-      redirect_to login_path
+      redirect_to login_url
     end
   end
   
@@ -81,19 +81,19 @@ class AccountsController < ApplicationController
         current_account.password = params[:password]        
         if current_account.save
           flash[:notice] = 'Your password has been changed.'
-          redirect_to edit_account_path(:account => current_account)
+          redirect_to edit_account_url(:account => current_account)
         else
           flash[:error] = 'Sorry, your password could not be changed.'
-          redirect_to edit_account_path
+          redirect_to edit_account_url
         end
       else
         flash[:error] = 'The confirmation of the new password was incorrect.'
         @old_password = params[:old_password]
-        redirect_to edit_account_path
+        redirect_to edit_account_url
       end
     else
       flash[:error] = 'Your old password is incorrect.'
-      redirect_to edit_account_path
+      redirect_to edit_account_url
     end 
   end
   

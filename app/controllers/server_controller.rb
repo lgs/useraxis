@@ -55,7 +55,7 @@ class ServerController < ApplicationController
     elsif checkid_request.immediate
       render_response(checkid_request.answer(true, nil, identity))
     else
-      redirect_to decide_path
+      redirect_to decide_url
     end
   end
   
@@ -103,13 +103,13 @@ class ServerController < ApplicationController
   def handle_checkid_request
     if allow_verification?
       save_checkid_request
-      redirect_to proceed_path
+      redirect_to proceed_url
     elsif openid_request.immediate
       render_response(openid_request.answer(false))
     else
       save_checkid_request
-      session[:return_to] = proceed_path
-      redirect_to safe_login_path
+      session[:return_to] = proceed_url
+      redirect_to safe_login_url
     end
   end
   
@@ -135,13 +135,13 @@ class ServerController < ApplicationController
     self.openid_request = checkid_request
     if !openid_request.is_a?(OpenID::Server::CheckIDRequest)
       flash[:error] = 'The identity verification request is invalid.'
-      redirect_to home_path
+      redirect_to home_url
     elsif !allow_verification?
       flash[:notice] = logged_in? && !pape_requirements_met?(auth_time) ?
         'The Service Provider requires reauthentication, because your last login is too long ago.' :
         'Please log in to verify your identity.'
-      session[:return_to] = proceed_path
-      redirect_to login_path
+      session[:return_to] = proceed_url
+      redirect_to login_url
     end
   end
   

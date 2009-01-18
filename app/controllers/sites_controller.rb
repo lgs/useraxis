@@ -22,7 +22,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       if @site.update_attributes(params[:site])
         flash[:notice] = 'The release policy for this site has been updated.'
-        format.html { redirect_to edit_account_site_path(@site) }
+        format.html { redirect_to edit_account_site_url(@site) }
       else
         format.html { render :action => 'edit' }
       end
@@ -33,7 +33,7 @@ class SitesController < ApplicationController
     @site.destroy
 
     respond_to do |format|
-      format.html { redirect_to account_sites_path }
+      format.html { redirect_to account_sites_url }
     end
   end
   

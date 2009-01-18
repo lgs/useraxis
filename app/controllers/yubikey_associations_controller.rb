@@ -9,7 +9,7 @@ class YubikeyAssociationsController < ApplicationController
       flash[:error] = 'Sorry, the given Yubico one time password is incorrect.'
     end
     respond_to do |format|
-      format.html { redirect_to edit_account_path }
+      format.html { redirect_to edit_account_url }
     end
   end
   
@@ -19,7 +19,7 @@ class YubikeyAssociationsController < ApplicationController
     flash[:notice] = 'Your account has been disassociate from the Yubico identity.'
     
     respond_to do |format|
-      format.html { redirect_to edit_account_path }
+      format.html { redirect_to edit_account_url }
     end
   end
   

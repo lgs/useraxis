@@ -4,15 +4,15 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.resources :reports, :collection => {:population => :get}
 
-  map.resources :lifestream, :controller => "home", :path_prefix => '/:account'
-  map.resources :feed_urls, :path_prefix => '/:account'
-  map.connect '/search', :controller => 'home', :action => 'search'
+  map.resources :lifestream, :controller => "home", :path_prefix => '/:account', :requirements => { :protocol => "http" }
+  map.resources :feed_urls, :path_prefix => '/:account', :requirements => { :protocol => "http" }
+  map.connect '/search', :controller => 'home', :action => 'search', :requirements => { :protocol => "http" }
 
-  map.resources :usernames
-  map.resources :services, :collection  => { :list => :get }
-  map.resources :opml_metadatas
+  map.resources :usernames, :requirements => { :protocol => "http" }
+  map.resources :services, :collection  => { :list => :get }, :requirements => { :protocol => "http" }
+  map.resources :opml_metadatas, :requirements => { :protocol => "http" }
 
-  map.resource :account,
+  map.resource :account, :requirements => { :protocol => "https" },
     :member => { :activate => :get, :password => :get, :change_password => :put } do |account|
     account.resources :personas do |personas|
       personas.resources :properties
@@ -23,18 +23,23 @@ ActionController::Routing::Routes.draw do |map|
     account.resource :yubikey_association
   end
   
-  map.resource :session
-  map.resource :password
+  map.resource :session, :requirements => { :protocol => "https" }
+  map.resource :password, :requirements => { :protocol => "http" }
   
   map.with_options :controller => 'passwords' do |pwd|
     pwd.forgot_password 'forgot_password', :action => 'new'
     pwd.reset_password  'reset_password/:id', :action => 'edit'
   end
-  
+
   map.with_options :controller => 'sessions' do |sessions|
-    sessions.login 'login', :action => 'new'
-    sessions.logout 'logout', :action => 'destroy'
+    sessions.login 'login', :action => 'new', :protocol => 'https'
+    sessions.logout 'logout', :action => 'destroy', :protocol => 'https'
   end
+
+  #map.with_options :controller => 'sessions' do |sessions|
+    #sessions.login 'login', :action => 'new'
+    #sessions.logout 'logout', :action => 'destroy'
+  #end
 
   map.with_options :controller => 'server' do |server|
     server.formatted_server 'server.:format', :action => 'index'
@@ -48,23 +53,23 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => 'consumer' do |consumer|
-    consumer.consumer 'consumer', :action => 'index'
-    consumer.consumer_start 'consumer/start', :action => 'start'
-    consumer.consumer_complete 'consumer/complete', :action => 'complete'
+    consumer.consumer 'consumer', :action => 'index', :protocol => 'http'
+    consumer.consumer_start 'consumer/start', :action => 'start', :protocol => 'http'
+    consumer.consumer_complete 'consumer/complete', :action => 'complete', :protocol => 'http'
   end
 
   map.with_options :controller => 'info' do |info|
-    info.home '', :action => 'index'
-    info.help 'help', :action => 'help'
-    info.safe_login 'safe-login', :action => 'safe_login'
-    info.about 'about', :action => 'about'
-    info.contact 'contact', :action => 'contact'
-    info.oauth 'oauth', :action => 'oauth'
+    info.home '', :action => 'index', :protocol => 'http'
+    info.help 'help', :action => 'help', :protocol => 'http'
+    info.safe_login 'safe-login', :action => 'safe_login',:protocol => 'http'
+    info.about 'about', :action => 'about', :protocol => 'http'
+    info.contact 'contact', :action => 'contact', :protocol => 'http'
+    info.oauth 'oauth', :action => 'oauth', :protocol => 'http'
   end
 
   map.with_options :controller => 'accounts' do |account|
-    account.formatted_identity ':account.:format', :action => 'show'
-    account.identity ':account', :action => 'show'
+    account.formatted_identity ':account.:format', :action => 'show', :protocol => 'https'
+    account.identity ':account', :action => 'show', :protocol => 'https'
   end
   
 end

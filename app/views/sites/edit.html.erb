@@ -2,7 +2,7 @@
 
 <%= error_messages_for 'site' %>
 
-<% form_for @site, :url => account_site_path(@site), :method => :put do |f| %>
+<% form_for @site, :url => account_site_url(@site), :method => :put do |f| %>
 	
 	<div class="row space">
 		<%= f.label :persona_id, "Persona" %>
@@ -13,8 +13,8 @@
 	<h3>
 		<%=h @site.persona.title %>
 		<span class="note">
-			<%= link_to "edit this persona", edit_account_persona_path(@site.persona, :return => url_for(:persona_id => params[:persona_id])) %> or
-			<%= link_to "create a new persona", new_account_persona_path(:return => url_for) %>
+			<%= link_to "edit this persona", edit_account_persona_url(@site.persona, :return => url_for(:persona_id => params[:persona_id])) %> or
+			<%= link_to "create a new persona", new_account_persona_url(:return => url_for) %>
 		</span>
 	</h3>
 	

@@ -28,7 +28,7 @@ class PersonasController < ApplicationController
 			begin
 				@persona.save!
 				flash[:notice] = 'The persona was successfully created.'
-				format.html { redirect_back_or_default account_personas_path }
+				format.html { redirect_back_or_default account_personas_url }
 			rescue ActiveRecord::RecordInvalid
 				format.html { render :action => "new" }
 			end
@@ -40,7 +40,7 @@ class PersonasController < ApplicationController
 			begin
 				@persona.update_attributes(params[:persona])
 				flash[:notice] = 'The persona has been updated.'
-				format.html { redirect_back_or_default account_personas_path }
+				format.html { redirect_back_or_default account_personas_url }
 			rescue ActiveRecord::RecordInvalid, ActiveRecord::MultiparameterAssignmentErrors
 				format.html { render :action => "edit" }
 			end
@@ -54,7 +54,7 @@ class PersonasController < ApplicationController
 			rescue Persona::NotDeletable
 				flash[:error] = 'This persona cannot be deleted.'
 			end
-			format.html { redirect_to account_personas_path }
+			format.html { redirect_to account_personas_url }
 		end
 	end
 	
@@ -66,7 +66,7 @@ class PersonasController < ApplicationController
 	
 	def redirect_back_or_default(default)
 		case session[:return_to]
-		when decide_path then redirect_to decide_path(:persona_id => @persona.id)
+		when decide_url then redirect_to decide_url(:persona_id => @persona.id)
 	  else super(default)
     end
 	end

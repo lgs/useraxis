@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = 'You are now logged out.'
-    redirect_to home_path
+    redirect_to home_url
   end
   
   private

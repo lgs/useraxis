@@ -5,11 +5,11 @@
 
   <% for service in @services %>
     <tr><td>
-      <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), edit_service_path(service) -%>
-      <%= link_to service.servicename, edit_service_path(service) -%>
+      <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), edit_service_url(service) -%>
+      <%= link_to service.servicename, edit_service_url(service) -%>
     </td></tr>
   <% end %>
  
 </table>
 
-<!-- # %= link_to 'New service', new_service_path % -->
+<!-- # %= link_to 'New service', new_service_url % -->

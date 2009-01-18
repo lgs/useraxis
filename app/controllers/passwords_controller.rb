@@ -7,7 +7,7 @@ class PasswordsController < ApplicationController
     if @account = Account.find_by_email(params[:email], :conditions => 'activation_code IS NULL')
       @account.forgot_password!   
       flash[:notice] = 'A password reset link has been sent to your email address.'
-      redirect_to login_path
+      redirect_to login_url
     else
       flash[:error] = 'Could not find a user with that email address.'
       render :action => 'new'
@@ -19,7 +19,7 @@ class PasswordsController < ApplicationController
     unless params[:password].blank?
       if @account.update_attributes(:password => params[:password], :password_confirmation => params[:password_confirmation])
         flash[:notice] = 'Password reset.'
-        redirect_to login_path
+        redirect_to login_url
       else
         flash[:error] = 'Password mismatch.'
         render :action => 'edit'
@@ -37,7 +37,7 @@ class PasswordsController < ApplicationController
     @account = Account.find_by_password_reset_code(@reset_code) unless @reset_code.blank?
     unless @account
       flash[:error]  = 'Sorry, your password reset code is invalid. Please check the code and try again.'
-      redirect_to new_password_path
+      redirect_to new_password_url
     end
   end
   

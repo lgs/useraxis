@@ -7,12 +7,12 @@
     <% for service in @services %>
       <%= link_to image_tag("/images/sites_icons/#{service.servicename}.png"), service.url + @usernames[n].login_name -%>
       <% n = n + 1 %>
-    <% end %>  <%= link_to 'add/edit', list_services_path -%>
+    <% end %>  <%= link_to 'add/edit', list_services_url -%>
 <% else %>
   <table>
     <tr><td>There are no entries, yet.</td></tr> 
   </table>
-  <p><%= link_to 'Add a service', list_services_path -%></p>
+  <p><%= link_to 'Add a service', list_services_url -%></p>
 <% end %>
 
 

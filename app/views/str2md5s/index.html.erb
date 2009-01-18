@@ -21,7 +21,7 @@
 <% for str2md5 in @str2md5s %>
   <tr>
     <td><%= link_to 'Show', str2md5 %></td>
-    <td><%= link_to 'Edit', edit_str2md5_path(str2md5) %></td>
+    <td><%= link_to 'Edit', edit_str2md5_url(str2md5) %></td>
     <td><%= link_to 'Destroy', str2md5, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -29,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New str2md5', new_str2md5_path %>
+<%= link_to 'New str2md5', new_str2md5_url %>

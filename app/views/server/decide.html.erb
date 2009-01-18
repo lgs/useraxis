@@ -3,13 +3,13 @@
 <p><strong><%=h checkid_request.trust_root %></strong> requests some personal data.<br />
 Please select the information you would like to submit.</p>
 <p class="note">The attributes shown are from your persona <strong><%=h @site.persona.title %></strong>.<br />
-To submit other values you can <%= link_to "edit the persona", edit_account_persona_path(@site.persona, :return => decide_path(:persona_id => @site.persona.id)) %>
+To submit other values you can <%= link_to "edit the persona", edit_account_persona_url(@site.persona, :return => decide_url(:persona_id => @site.persona.id)) %>
 or <%= link_to_function "choose another persona", 'Element.toggle("persona_select")' %>.</p>
 <% else %>
 <p><strong><%=h checkid_request.trust_root %></strong> requires your authentication.</p>
 <% end %>
 
-<% form_tag decide_path, :method => :get, :id => 'persona_select', :style => 'display:none;' do %>
+<% form_tag decide_url, :method => :get, :id => 'persona_select', :style => 'display:none;' do %>
 
 	<h3>Choose a persona</h3>
 	<% unless current_account.personas.empty? %>
@@ -20,13 +20,13 @@ or <%= link_to_function "choose another persona", 'Element.toggle("persona_selec
 	</div>
 	<div>
 		<%= submit_tag "choose persona" %> or
-		<%= link_to "create a new persona", new_account_persona_path(:return => decide_path) %>
+		<%= link_to "create a new persona", new_account_persona_url(:return => decide_url) %>
 	</div>
 	<% end %>
 	
 <% end if sreg_request || ax_fetch_request %>
 
-<% form_for @site, :url => complete_path do |f| %>
+<% form_for @site, :url => complete_url do |f| %>
 
 	<% if sreg_request || ax_fetch_request %>
 	<table cellspacing="0">

@@ -7,7 +7,7 @@ class ConsumerController < ApplicationController
       oidreq = openid_consumer.begin(params[:openid_identifier])
     rescue OpenID::OpenIDError => e
       flash[:error] = "Discovery failed for #{params[:openid_identifier]}: #{e}"
-      redirect_to consumer_path
+      redirect_to consumer_url
       return
     end
     if params[:use_sreg]

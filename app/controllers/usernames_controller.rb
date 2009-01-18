@@ -6,7 +6,7 @@ class UsernamesController < ApplicationController
   # GET /usernames.xml
   def index
 
-    redirect_to  services_path
+    redirect_to  services_url
 
     #@usernames = Username.find(:all)
     ##@usernames = @account.usernames.collect { |s| s.service }

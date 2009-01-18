@@ -1,11 +1,11 @@
 <h2>Login</h2>
 
-<% form_tag session_path do %>
+<% form_tag session_url do %>
 	<div class="row">
 		<% if checkid_request && !checkid_request.id_select %>
 		<strong>Your OpenID:</strong>
 		<%= checkid_request.identity %>
-		<span class="note"><%= link_to 'cancel this request', cancel_path %></span>
+		<span class="note"><%= link_to 'cancel this request', cancel_url %></span>
 		<%= hidden_field_tag :login, extract_login_from_identifier(checkid_request.identity) %>
 		<% else %>
 		<%= label_tag :login %>
@@ -22,7 +22,7 @@
 	</div>
 	<div>
 		<%= submit_tag 'login' %>
-		<span class="note"><%= link_to 'I forgot my password', forgot_password_path %></span>
+		<span class="note"><%= link_to 'I forgot my password', forgot_password_url %></span>
 	</div>
 
 

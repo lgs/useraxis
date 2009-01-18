@@ -1,4 +1,4 @@
-<% form_tag consumer_start_path do %>
+<% form_tag consumer_start_url do %>
 	<div class="row">
 		<%= label_tag :openid_identifier, 'Identifier:', :class => 'check' %>
 		<%= text_field_tag :openid_identifier, APP_CONFIG['host'] %>
