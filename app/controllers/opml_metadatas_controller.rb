@@ -1,6 +1,6 @@
 class OpmlMetadatasController < ApplicationController
 
-  before_filter :login_required
+  before_filter :login_required, :except => [:show]
   before_filter :find_account
 
   # GET /opml_metadatas
@@ -23,6 +23,12 @@ class OpmlMetadatasController < ApplicationController
   def show
     @opml_metadata = OpmlMetadata.find(params[:id])
     @OPML = @opml_metadata.db_file.data
+
+    # display a list of sources, parsing OPML
+    #doc  = Hpricot.XML(@OPML)
+   #(doc/"outline[@htmlurl]").each do |item| 
+   #    @url = item.attributes['htmlurl'] 
+   # end
 
     respond_to do |format|
       format.html # show.html.erb
