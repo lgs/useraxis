@@ -53,8 +53,12 @@ Rails::Initializer.run do |config|
   config.gem 'mechanize', :version => '0.9.0'
   config.gem 'hpricot', :version => '0.6.164'
   config.gem 'firewatir', :version => '1.6.2'
+  config.gem 'scrubyt-experimental', :lib => 'scrubyt', :version => '0.1.1' 
   #config.gem 'skimr', :version => '0.4.1'
 
+  # Debugging
+  #config.gem 'ruby-debug', :version => '0.10.3'
+ 
 end
 # For mislav's will paginate plugin
 gem 'mislav-will_paginate', '~> 2.2'

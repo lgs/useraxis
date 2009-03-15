@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  #map.resources :str2md5s, :collection => {:convert => :get}
-
-  #map.resources :reports, :collection => {:population => :get}
+  map.resources :top_blogs, :requirements => { :protocol => "http" }
 
   map.resources :lifestream, :controller => "home", :path_prefix => '/:account'#, :requirements => { :protocol => "https" }
   map.resources :feed_urls, :path_prefix => '/:account', :requirements => { :protocol => "http" }
@@ -35,11 +33,6 @@ ActionController::Routing::Routes.draw do |map|
     sessions.login 'login', :action => 'new', :protocol => 'https'
     sessions.logout 'logout', :action => 'destroy', :protocol => 'http'
   end
-
-  #map.with_options :controller => 'sessions' do |sessions|
-    #sessions.login 'login', :action => 'new'
-    #sessions.logout 'logout', :action => 'destroy'
-  #end
 
   map.with_options :controller => 'server' do |server|
     server.formatted_server 'server.:format', :action => 'index', :protocol => "http"

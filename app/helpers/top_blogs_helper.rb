@@ -1,0 +1,2 @@
+module TopBlogsHelper
+end
