@@ -1,14 +1,11 @@
 <h1>Delicious Lookup  </h1>
 
 <% form_tag top_blogs_path, :method => 'get' do %>
-
-    URL: <%= text_field_tag :url_lookup, params[:url_lookup], {:size => 72}  %>
-    <%= submit_tag "lookup", :name => nil %>
-
+  URL: <%= text_field_tag :url_lookup, params[:url_lookup], {:size => 82}  %>
+  <%= submit_tag "lookup", :name => nil %>
 <% end %>
 
-
-<%= debug params %> 
-<%= @extractor.results.inspect %>
-
-
+<!-- #  before redirection  -->
+<h3>The 5 first delicious  Top Tags </h3></br>
+<p><%= @extractor.results.first(10).inspect %></p>
+<!-- -->
