@@ -1,3 +1,4 @@
+<% debug params %>
 <h1>Delicious Lookup  </h1>
 
 <% form_tag top_blogs_path, :method => 'get' do %>
@@ -5,7 +6,15 @@
   <%= submit_tag "lookup", :name => nil %>
 <% end %>
 
-<!-- #  before redirection  -->
-<h3>The 5 first delicious  Top Tags </h3></br>
-<p><%= @extractor.results.first(10).inspect %></p>
-<!-- -->
+
+
+<% if params[:url_lookup] != nil %>
+
+    <h3>The 5 first delicious  Top Tags </h3></br>
+    <p><%= @extractor.results.first(10).inspect %></p>
+
+    <h3>The 5 first delicious  Top Tags </h3></br>
+    <p><%= @list.inspect %></p>
+
+<% end %>
+
