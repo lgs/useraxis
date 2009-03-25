@@ -1,19 +1,20 @@
 <% debug params %>
-<h1>Delicious Lookup  </h1>
+<h1>Delicious Lookup, helps you systematically discover the top blogs in any niche 
+</h1><p></br></p>
 
+<h3>Copy & past the URL of you best web page. The resource which best represent the niche you are going to explore.</br></h3>
 <% form_tag top_blogs_path, :method => 'get' do %>
   URL: <%= text_field_tag :url_lookup, params[:url_lookup], {:size => 82}  %>
   <%= submit_tag "lookup", :name => nil %>
 <% end %>
 
-
-
 <% if params[:url_lookup] != nil %>
 
-    <h3>The 5 first delicious  Top Tags </h3></br>
+    <h3>Here you get the 5 first delicious Top Tags for the page you looked up : </br>
+     max 5 tags, cause delicious TagLookup limits the query construction to 5 tags. Permutation doesn't change the resoult.</h3>
     <p><%= @extractor.results.first(10).inspect %></p>
 
-    <h3>The 5 first delicious  Top Tags </h3></br>
+    <h3>Than you get "the most popular page for multiple tags", actually unsupported function by delicious but very useful to track memes. </h3></br>
     <p><%= @list.inspect %></p>
 
 <% end %>

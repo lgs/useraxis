@@ -30,7 +30,13 @@ class TopBlog #< Scrubyt::Extractor
   protected
   def self.tags(addtag)
     RAILS_DEFAULT_LOGGER.debug "MODEL protected : TopBlog - self.tags(addtag) == addtag : #{addtag}"
+    begin
     @tags = "#{addtag[0][:tag]}+#{addtag[2][:tag]}+#{addtag[4][:tag]}+#{addtag[6][:tag]}+#{addtag[8][:tag]}"
+    rescue RuntimeError
+      puts "Hei, no tags found on delicious for the URL you typed. If you are sure of what you are typing in, may be is not tagged on delicious jet. Doit yourself and try later :-) "
+    rescue NoMethodError
+      puts "Hei, no tags found on delicious for the URL you typed. If you are sure of what you are typing in, may be is not tagged on delicious jet. Doit yourself and try later :-) "
+    end
     RAILS_DEFAULT_LOGGER.debug "MODEL protected : TopBlog - self.tags - @tags : #{@tags}"
   end
 end
