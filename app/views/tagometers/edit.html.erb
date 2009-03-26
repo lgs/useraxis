@@ -1,0 +1,16 @@
+<h1>Editing tagometer</h1>
+
+<% form_for(@tagometer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :page %><br />
+    <%= f.text_field :page %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @tagometer %> |
+<%= link_to 'Back', tagometers_path %>

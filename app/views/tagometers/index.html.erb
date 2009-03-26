@@ -1,0 +1,14 @@
+<% debug params %>
+<h1>Delicious Lookup, helps you systematically discover the top blogs in any niche 
+</h1><p></br></p>
+
+<h3>Copy & past the URL of you best web page. The resource which best represent the niche you are going to explore.</br></h3>
+<% form_tag tagometers_path, :method => 'get' do %>
+  URL: <%= text_field_tag :page, params[:page], {:size => 82}  %>
+  <%= submit_tag "page", :name => nil %>
+<% end %>
+
+<% for tagometer in @tagometers %>
+   <%= puts tagometer %>
+<% end %>
+<% debug  @tagometers  %>

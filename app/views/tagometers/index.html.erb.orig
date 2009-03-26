@@ -1,0 +1,20 @@
+<h1>Listing tagometers</h1>
+
+<table>
+  <tr>
+    <th>Page</th>
+  </tr>
+
+<% for tagometer in @tagometers %>
+  <tr>
+    <td><%=h tagometer.page %></td>
+    <td><%= link_to 'Show', tagometer %></td>
+    <td><%= link_to 'Edit', edit_tagometer_path(tagometer) %></td>
+    <td><%= link_to 'Destroy', tagometer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tagometer', new_tagometer_path %>
