@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :tagometers
 
-
-  map.resources :top_blogs, :requirements => { :protocol => "http" }
+  #map.resources :top_blogs, :requirements => { :protocol => "http" }
 
   map.resources :lifestream, :controller => "home", :path_prefix => '/:account'#, :requirements => { :protocol => "https" }
   map.resources :feed_urls, :path_prefix => '/:account', :requirements => { :protocol => "http" }

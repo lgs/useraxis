@@ -1,12 +1,10 @@
-#require 'json/add/rails'
 class TagometersController < ApplicationController
 
   # GET /tagometers
   # GET /tagometers.xml
   def index
-    @tagometers = ""
     logger.debug "TagometersController#index - Tagometer.find(:all, :params => { :url => \"#{params[:page]}\" })"
-    @tagometers = Tagometer.find(:all, :params => { :url => "#{params[:page]}" }).to_json
+    @tagometers = Tagometer.find(:all, :params => { :url => "#{params[:page]}" })
     logger.debug "TagometersController#index - @tagometers.class = #{@tagometers.class}"
     logger.debug "TagometersController#index - @tagometers = #{@tagometers}"
     logger.debug "TagometersController#index - @tagometers.inspect = #{@tagometers.inspect}"
@@ -14,7 +12,7 @@ class TagometersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @tagometers }
+      #format.xml  { render :xml => @tagometers }
       format.json  { render :json => @tagometers }
     end
   end

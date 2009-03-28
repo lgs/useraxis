@@ -8,5 +8,9 @@
   <%= submit_tag "page", :name => nil %>
 <% end %>
 
-   <%= @tagometers.inspect %>
-<%= debug  @tagometers  %>
+<%= @tagometers.inspect %>
+<!-- #%= @tagometers.to_json(:only => ["top_tags"]) % -->
+
+<p><%= debug  @tagometers  %></p>
+
+<p><%= @attributes.inspect %></p>
