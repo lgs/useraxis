@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :tagometers
+  map.resources :tagexplorers
 
   #map.resources :top_blogs, :requirements => { :protocol => "http" }
 

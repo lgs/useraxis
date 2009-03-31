@@ -1,0 +1,2 @@
+module TagexplorersHelper
+end

@@ -1,3 +1,4 @@
+<%= debug params %>
 <h1>Delicious Lookup, helps you systematically discover the top blogs in any niche 
 </h1><p></br></p>
 
@@ -7,5 +8,11 @@
   <%= submit_tag "page", :name => nil %>
 <% end %>
 
-<%= @tagometers %>
-<%= @list %>
+<h3>Here the tags per URL</h3>
+<p><%= @tagometers %></p></br>
+<%= debug @tagometers %>
+
+
+<h3> ... and here the principal URLs for the same tags
+<p><%= @list %></p>
+<%= debug @list %>

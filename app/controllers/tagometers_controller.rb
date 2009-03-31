@@ -4,36 +4,38 @@ class TagometersController < ApplicationController
   # GET /tagometers
   # GET /tagometers.xml
   def index
+
     begin
-    logger.debug "TagometersController#index - Tagometer.find(:all, :params => { :url => \"#{params[:page]}\" })"
-    @tagometers = Tagometer.find(:all, :params => { :url => "#{params[:page]}" }).to_json
-    logger.debug "TagometersController#index - @tagometers.class = #{@tagometers.class}"
-    logger.debug "TagometersController#index - @tagometers = #{@tagometers}"
+      logger.debug "TagometersController#index - Tagometer.find(:all, :params => { :url => \"#{params[:page]}\" })"
+      @tagometers = Tagometer.find(:all, :params => { :url => "#{params[:page]}" }).to_json
+      logger.debug "TagometersController#index - @tagometers.class = #{@tagometers.class}"
+      logger.debug "TagometersController#index - @tagometers = #{@tagometers}"
 
-    tags = ActiveSupport::JSON.decode("#{@tagometers}")
-    logger.debug "TagometersController#index - tags = #{tags}"
-    tagstring = tags[0].stringify_keys!["top_tags"].keys.first(5)
-    logger.debug "TagometersController#index - tagstring = #{tagstring}"
-    @addtags = ''
-    tagstring.each do |t|
-      @addtags << t + "+"
-    end   
-    @addtags = "/" + @addtags
-    logger.debug "TagometersController#index - @addtags = #{@addtags}"
+      tags = ActiveSupport::JSON.decode("#{@tagometers}")
+      logger.debug "TagometersController#index - tags = #{tags}"
+      tagstring = tags[0].stringify_keys!["top_tags"].keys.first(5)
+      logger.debug "TagometersController#index - tagstring = #{tagstring}"
+      @addtags = ''
+      tagstring.each do |t|
+        @addtags << t + "+"
+      end   
+      @addtags = "/" + @addtags
+      logger.debug "TagometersController#index - @addtags = #{@addtags}"
+      @list = Tagexplorer.search_by_tags("#{@addtags}")
+      logger.debug "TagometersController#index - @list.class = #{@list.class}"
+      logger.debug "TagometersController#index - @list = #{@list}"
 
-    Tagexplorer.addtags = @addtags
-    @list = Tagexplorer.find(:all, :from => "#{@addtags}")
-    logger.debug "TagometersController#index - @list.class = #{@list.class}"
-    logger.debug "TagometersController#index - @list = #{@list}"
+      #respond_to do |format|
+      #  format.html # index.html.erb
+      #  format.html { redirect_to :controller => :tagexplorers, :methods => :get }# index.html.erb
+      #  #format.xml  { render :xml => @tagometers }
+      #  #format.json  { render :json => @tagometers }
+      #end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      #format.xml  { render :xml => @tagometers }
-      #format.json  { render :json => @tagometers }
-    end
     rescue NoMethodError
       puts "Some variable is nil ( params[:page], tags )"
     end
+
   end
 
 #  # GET /tagometers/1
