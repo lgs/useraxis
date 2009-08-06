@@ -1,0 +1,3 @@
+[submodule "attachment_fu"]
+	path = attachment_fu
+	url = git://github.com/technoweenie/attachment_fu.git

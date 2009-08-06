@@ -1,8 +1,7 @@
-ENV['RAILS_ENV'] ||= 'development'
-ENV['GEM_PATH'] = '/home/useraxis/.gems:/usr/lib/ruby/gems/1.8'
+#ENV['RAILS_ENV'] ||= 'development'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -51,7 +50,7 @@ Rails::Initializer.run do |config|
   config.gem 'dj2-postrank', :lib => 'postrank', :version => '0.9.1'
 
   config.gem 'mechanize', :version => '0.9.0'
-  config.gem 'hpricot', :version => '0.6.164'
+  config.gem 'hpricot', :version => '0.8.1'
   config.gem 'firewatir', :version => '1.6.2'
   #config.gem 'skimr', :version => '0.4.1'
 
